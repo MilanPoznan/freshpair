@@ -1,3 +1,4 @@
+require("dotenv").config();
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
@@ -12,7 +13,7 @@ const config: GatsbyConfig = {
   plugins: [{
     resolve: 'gatsby-source-wordpress',
     options: {
-      "url": "https://freshpair.classyladyshop.com/graphql "
+      "url": `${process.env.GATSBY_WP_URL}graphql`
     }
   }, "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-react-helmet", "gatsby-plugin-sharp", "gatsby-transformer-sharp"]
 
