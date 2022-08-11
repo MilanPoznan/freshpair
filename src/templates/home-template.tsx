@@ -14,7 +14,7 @@ export default function HomePage({ data, location }: any) {
 
   console.log(categoryGroup)
 
-  return (<Layout menus={menus}>
+  return (<Layout menus={menus[0]}>
     <HeroSection heroData={categoryGroup} />
     <div>homepage</div>
 

@@ -4,14 +4,12 @@ import { Link } from "gatsby"
 import NavMenu from './NavMenu'
 import Logo from './Logo'
 import CartItems from './CartItems'
-import { ShopContext } from './Layout'
 // hooks
 import { useCurrentWidth } from '../hooks/useResize'
 
 // @ts-ignore: Unreachable code error
 import CartImage from '../images/carticon.png';
 //Reducer
-import useShop from "./ShopContext";
 // styles
 import {
   Wrapper,
@@ -23,9 +21,6 @@ import {
 
 /***** Menu props *****/
 export type MenuItemsProps = {
-  childItems: {
-    nodes: MenuItemsProps[]
-  }
   databaseId: number;
   label: string;
   order?: number;
@@ -36,7 +31,6 @@ export type MenuItemsProps = {
 }
 
 export type MenuProps = {
-  locations: string[];
   name: string;
   slug: string;
   menuItems: {
@@ -44,17 +38,10 @@ export type MenuProps = {
   };
 }
 
-interface Props {
-  menuItems: MenuProps[];
-}
-
-export default function Header({ menuItems }: Props) {
+export default function Header({ menuItems }: any) {
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   const [isCartMenuOpen, setIsCartMenuOpen] = useState<boolean>(false)
-
-  const shop = useContext(ShopContext);
-
 
   const windowWidth = useCurrentWidth();
 
@@ -82,6 +69,8 @@ export default function Header({ menuItems }: Props) {
         </Link>
       </LogoWrapper>
 
+      <NavMenu isMenuOpen={isMenuOpen} menuLinks={menuItems} />
+
       <CTAWrapper>
         <CartHeaderWrapper>
         </CartHeaderWrapper>
@@ -91,7 +80,6 @@ export default function Header({ menuItems }: Props) {
         <HamburgerButton onClick={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)} isMenuOpen={isMenuOpen}><span /></HamburgerButton>
       </CTAWrapper>
 
-      <NavMenu isMenuOpen={isMenuOpen} menuLinks={menuItems} />
       {isCartMenuOpen && <CartItems />}
     </Wrapper>
   )

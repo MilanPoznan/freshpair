@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   padding: 0 24px;
   /* grid-template-columns: 1fr auto 1fr; */
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.highlight};
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
   z-index: 10;
   height: 80px;
@@ -61,10 +61,13 @@ export const HamburgerButton = styled.div<{ isMenuOpen: boolean }>`
 `
 
 export const LogoWrapper = styled.div`
-  /* margin: auto; */
-  /* width: 60px; */
   a {
     margin-top: 5px;
+  }
+  svg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
   }
   @media ${device.desktopS} {
     margin-left: 24px;

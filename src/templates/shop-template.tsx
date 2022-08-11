@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 
 import { GatsbyImageInterface, GatsbyImageInterface2 } from '../globalInterface'
 
-interface SingleCatSnikItem {
+type SingleCatSnikItem = {
   link: string
   name: string
 }
@@ -21,19 +21,21 @@ export interface SneakersData {
   featuredImageDatabaseId: number
   featuredImage: GatsbyImageInterface2
   categories: {
-    nodes: SingleCatSnikItem[]
+    nodes: {
+      link: string
+      name: string
+    }[]
   }
   mycattegories: | string[]
+  parrentCategory: string | null
 }
 
 
 
 export default function Shop({ data, location }: any) {
-  // const { wpPage: { translations, language, title, slug, siteContent: { flexibleContent } }, allWp, allWpChef, allWpMenu: { menus } } = data
 
   const { allWpMenu: { menus }, allWpSneaker: { nodes }, allWpCategory } = data
 
-  console.log(nodes)
   return (
     <Layout menus={menus[0]}>
       Shop template

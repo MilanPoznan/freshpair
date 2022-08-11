@@ -9,6 +9,7 @@ export const theme: DefaultTheme = {
     lightBlue: '#B9CCD5',
     green: '#97C961',
     black: '#191B1A',
+    black60: '#191B1A99',
     blackOpacity40: '#191B1A66',
     darkGray: '#58595B',
     gray: '#D6D4D1',

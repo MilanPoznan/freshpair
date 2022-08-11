@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 type Props = {}
@@ -20,20 +20,67 @@ export const ItemsBox = styled.div`
   flex-flow: column;
 `
 
+export const CheckoutItemWrapper = styled.div`
+  display: flex;
+`
+export const CloseIcon = styled.div`
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    background-color: red;
+    border-radius: 4px;
+    top: 5px;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+`
+
 export default function CartItems({ }: Props) {
 
-  const storeSessionStorage = sessionStorage.getItem("store")
+  const [activeItems, setActiveItems] = useState([])
 
-  if (storeSessionStorage) {
-    let getItemsArr = JSON.parse(storeSessionStorage)
-    console.log(getItemsArr)
-  }
+  const storeSessionStorage = sessionStorage.getItem("store")
+  let storeSessionStorageArr = storeSessionStorage && JSON.parse(storeSessionStorage)
+
+  const removeFromSessionStorage = (name: string) =>
+    storeSessionStorageArr.filter((item: any) => item.name !== name)
+
+  const setNewSessionStorage = (name: string) =>
+    sessionStorage.setItem('store', JSON.stringify(removeFromSessionStorage(name)))
+
+  const removeItemsFromState = (name: string) =>
+    setActiveItems(removeFromSessionStorage(name))
+
+  useEffect(() => {
+    storeSessionStorage && setActiveItems(JSON.parse(storeSessionStorage))
+    console.log('storeSessionStorageArr', storeSessionStorageArr)
+  }, [])
+
 
   return (
     <CartItemsBox>
       <p>items:</p>
       <ItemsBox>
-        {storeSessionStorage && JSON.parse(storeSessionStorage).map((item: any) => <p>{item.name}</p>)}
+        {activeItems && activeItems.map((item: any) =>
+          <CheckoutItemWrapper key={item.id}>
+            <p>{item.name}</p>
+            <p>{item.id}</p>
+            <CloseIcon onClick={() => {
+              setNewSessionStorage(item.name)
+              removeItemsFromState(item.name)
+            }} />
+          </CheckoutItemWrapper>
+        )}
       </ItemsBox>
       <Link to="/checkout">checkout </Link>
 

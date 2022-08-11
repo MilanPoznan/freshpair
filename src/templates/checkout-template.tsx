@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import Layout from '../components/Layout'
 import CheckoutForm from '../components/CheckoutForm'
+import { CheckoutWrapper } from '../components/CheckoutForm.styled'
 
+import CheckoutItems from '../components/CheckoutItems'
 import { graphql } from 'gatsby'
 
 type Props = {
@@ -13,10 +15,12 @@ type Props = {
 export default function Checkout({ data }: Props) {
 
   const { allWpMenu: { menus } } = data
-
   return (
     <Layout menus={menus[0]}>
-      <CheckoutForm />
+      <CheckoutWrapper>
+        <CheckoutItems />
+        <CheckoutForm />
+      </CheckoutWrapper>
     </Layout>
   )
 }

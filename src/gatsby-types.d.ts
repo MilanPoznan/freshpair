@@ -2280,6 +2280,7 @@ type Query_wpPostArgs = {
   pingStatus: InputMaybe<StringQueryOperatorInput>;
   pinged: InputMaybe<StringQueryOperatorInput>;
   postFormats: InputMaybe<WpPostToPostFormatConnectionFilterInput>;
+  singleBlog: InputMaybe<WpPost_SingleblogFilterInput>;
   slug: InputMaybe<StringQueryOperatorInput>;
   status: InputMaybe<StringQueryOperatorInput>;
   tags: InputMaybe<WpPostToTagConnectionFilterInput>;
@@ -4099,6 +4100,7 @@ type WpCategoryFieldsEnum =
   | 'posts.nodes.pingStatus'
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
+  | 'posts.nodes.singleBlog.fieldGroupName'
   | 'posts.nodes.slug'
   | 'posts.nodes.status'
   | 'posts.nodes.tags.nodes'
@@ -9369,6 +9371,8 @@ type WpPost = Node & WpContentNode & WpDatabaseIdentifier & WpMenuItemLinkable &
   readonly pinged: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   /** Connection between the post type and the postFormat type */
   readonly postFormats: Maybe<WpPostToPostFormatConnection>;
+  /** Added to the GraphQL Schema because the ACF Field Group &quot;Single blog&quot; was set to Show in GraphQL. */
+  readonly singleBlog: Maybe<WpPost_Singleblog>;
   /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
   readonly slug: Maybe<Scalars['String']>;
   /** The current status of the object */
@@ -9977,6 +9981,145 @@ type WpPostFieldsEnum =
   | 'postFormats.nodes.termGroupId'
   | 'postFormats.nodes.termTaxonomyId'
   | 'postFormats.nodes.uri'
+  | 'singleBlog.fieldGroupName'
+  | 'singleBlog.heroImage.altText'
+  | 'singleBlog.heroImage.ancestors.nodes'
+  | 'singleBlog.heroImage.authorDatabaseId'
+  | 'singleBlog.heroImage.authorId'
+  | 'singleBlog.heroImage.caption'
+  | 'singleBlog.heroImage.children'
+  | 'singleBlog.heroImage.children.children'
+  | 'singleBlog.heroImage.children.id'
+  | 'singleBlog.heroImage.commentCount'
+  | 'singleBlog.heroImage.commentStatus'
+  | 'singleBlog.heroImage.comments.nodes'
+  | 'singleBlog.heroImage.contentTypeName'
+  | 'singleBlog.heroImage.databaseId'
+  | 'singleBlog.heroImage.date'
+  | 'singleBlog.heroImage.dateGmt'
+  | 'singleBlog.heroImage.description'
+  | 'singleBlog.heroImage.desiredSlug'
+  | 'singleBlog.heroImage.enclosure'
+  | 'singleBlog.heroImage.fileSize'
+  | 'singleBlog.heroImage.filename'
+  | 'singleBlog.heroImage.filesize'
+  | 'singleBlog.heroImage.gatsbyImage'
+  | 'singleBlog.heroImage.guid'
+  | 'singleBlog.heroImage.height'
+  | 'singleBlog.heroImage.id'
+  | 'singleBlog.heroImage.internal.content'
+  | 'singleBlog.heroImage.internal.contentDigest'
+  | 'singleBlog.heroImage.internal.description'
+  | 'singleBlog.heroImage.internal.fieldOwners'
+  | 'singleBlog.heroImage.internal.ignoreType'
+  | 'singleBlog.heroImage.internal.mediaType'
+  | 'singleBlog.heroImage.internal.owner'
+  | 'singleBlog.heroImage.internal.type'
+  | 'singleBlog.heroImage.isContentNode'
+  | 'singleBlog.heroImage.isTermNode'
+  | 'singleBlog.heroImage.link'
+  | 'singleBlog.heroImage.localFile.absolutePath'
+  | 'singleBlog.heroImage.localFile.accessTime'
+  | 'singleBlog.heroImage.localFile.atime'
+  | 'singleBlog.heroImage.localFile.atimeMs'
+  | 'singleBlog.heroImage.localFile.base'
+  | 'singleBlog.heroImage.localFile.birthTime'
+  | 'singleBlog.heroImage.localFile.birthtime'
+  | 'singleBlog.heroImage.localFile.birthtimeMs'
+  | 'singleBlog.heroImage.localFile.blksize'
+  | 'singleBlog.heroImage.localFile.blocks'
+  | 'singleBlog.heroImage.localFile.changeTime'
+  | 'singleBlog.heroImage.localFile.children'
+  | 'singleBlog.heroImage.localFile.childrenImageSharp'
+  | 'singleBlog.heroImage.localFile.ctime'
+  | 'singleBlog.heroImage.localFile.ctimeMs'
+  | 'singleBlog.heroImage.localFile.dev'
+  | 'singleBlog.heroImage.localFile.dir'
+  | 'singleBlog.heroImage.localFile.ext'
+  | 'singleBlog.heroImage.localFile.extension'
+  | 'singleBlog.heroImage.localFile.gid'
+  | 'singleBlog.heroImage.localFile.id'
+  | 'singleBlog.heroImage.localFile.ino'
+  | 'singleBlog.heroImage.localFile.mode'
+  | 'singleBlog.heroImage.localFile.modifiedTime'
+  | 'singleBlog.heroImage.localFile.mtime'
+  | 'singleBlog.heroImage.localFile.mtimeMs'
+  | 'singleBlog.heroImage.localFile.name'
+  | 'singleBlog.heroImage.localFile.nlink'
+  | 'singleBlog.heroImage.localFile.prettySize'
+  | 'singleBlog.heroImage.localFile.rdev'
+  | 'singleBlog.heroImage.localFile.relativeDirectory'
+  | 'singleBlog.heroImage.localFile.relativePath'
+  | 'singleBlog.heroImage.localFile.root'
+  | 'singleBlog.heroImage.localFile.size'
+  | 'singleBlog.heroImage.localFile.sourceInstanceName'
+  | 'singleBlog.heroImage.localFile.uid'
+  | 'singleBlog.heroImage.localFile.url'
+  | 'singleBlog.heroImage.mediaDetails.file'
+  | 'singleBlog.heroImage.mediaDetails.height'
+  | 'singleBlog.heroImage.mediaDetails.sizes'
+  | 'singleBlog.heroImage.mediaDetails.width'
+  | 'singleBlog.heroImage.mediaItemUrl'
+  | 'singleBlog.heroImage.mediaType'
+  | 'singleBlog.heroImage.mimeType'
+  | 'singleBlog.heroImage.modified'
+  | 'singleBlog.heroImage.modifiedGmt'
+  | 'singleBlog.heroImage.nodeType'
+  | 'singleBlog.heroImage.parentDatabaseId'
+  | 'singleBlog.heroImage.parentId'
+  | 'singleBlog.heroImage.parent.children'
+  | 'singleBlog.heroImage.parent.id'
+  | 'singleBlog.heroImage.publicUrl'
+  | 'singleBlog.heroImage.remoteFile.absolutePath'
+  | 'singleBlog.heroImage.remoteFile.accessTime'
+  | 'singleBlog.heroImage.remoteFile.atime'
+  | 'singleBlog.heroImage.remoteFile.atimeMs'
+  | 'singleBlog.heroImage.remoteFile.base'
+  | 'singleBlog.heroImage.remoteFile.birthTime'
+  | 'singleBlog.heroImage.remoteFile.birthtime'
+  | 'singleBlog.heroImage.remoteFile.birthtimeMs'
+  | 'singleBlog.heroImage.remoteFile.blksize'
+  | 'singleBlog.heroImage.remoteFile.blocks'
+  | 'singleBlog.heroImage.remoteFile.changeTime'
+  | 'singleBlog.heroImage.remoteFile.children'
+  | 'singleBlog.heroImage.remoteFile.childrenImageSharp'
+  | 'singleBlog.heroImage.remoteFile.ctime'
+  | 'singleBlog.heroImage.remoteFile.ctimeMs'
+  | 'singleBlog.heroImage.remoteFile.dev'
+  | 'singleBlog.heroImage.remoteFile.dir'
+  | 'singleBlog.heroImage.remoteFile.ext'
+  | 'singleBlog.heroImage.remoteFile.extension'
+  | 'singleBlog.heroImage.remoteFile.gid'
+  | 'singleBlog.heroImage.remoteFile.id'
+  | 'singleBlog.heroImage.remoteFile.ino'
+  | 'singleBlog.heroImage.remoteFile.mode'
+  | 'singleBlog.heroImage.remoteFile.modifiedTime'
+  | 'singleBlog.heroImage.remoteFile.mtime'
+  | 'singleBlog.heroImage.remoteFile.mtimeMs'
+  | 'singleBlog.heroImage.remoteFile.name'
+  | 'singleBlog.heroImage.remoteFile.nlink'
+  | 'singleBlog.heroImage.remoteFile.prettySize'
+  | 'singleBlog.heroImage.remoteFile.rdev'
+  | 'singleBlog.heroImage.remoteFile.relativeDirectory'
+  | 'singleBlog.heroImage.remoteFile.relativePath'
+  | 'singleBlog.heroImage.remoteFile.root'
+  | 'singleBlog.heroImage.remoteFile.size'
+  | 'singleBlog.heroImage.remoteFile.sourceInstanceName'
+  | 'singleBlog.heroImage.remoteFile.uid'
+  | 'singleBlog.heroImage.remoteFile.url'
+  | 'singleBlog.heroImage.resize.height'
+  | 'singleBlog.heroImage.resize.src'
+  | 'singleBlog.heroImage.resize.width'
+  | 'singleBlog.heroImage.sizes'
+  | 'singleBlog.heroImage.slug'
+  | 'singleBlog.heroImage.sourceUrl'
+  | 'singleBlog.heroImage.srcSet'
+  | 'singleBlog.heroImage.status'
+  | 'singleBlog.heroImage.template.templateName'
+  | 'singleBlog.heroImage.title'
+  | 'singleBlog.heroImage.uri'
+  | 'singleBlog.heroImage.width'
+  | 'singleBlog.heroImage.wpChildren.nodes'
   | 'slug'
   | 'status'
   | 'tags.nodes'
@@ -10080,6 +10223,7 @@ type WpPostFilterInput = {
   readonly pingStatus: InputMaybe<StringQueryOperatorInput>;
   readonly pinged: InputMaybe<StringQueryOperatorInput>;
   readonly postFormats: InputMaybe<WpPostToPostFormatConnectionFilterInput>;
+  readonly singleBlog: InputMaybe<WpPost_SingleblogFilterInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly status: InputMaybe<StringQueryOperatorInput>;
   readonly tags: InputMaybe<WpPostToTagConnectionFilterInput>;
@@ -10348,6 +10492,7 @@ type WpPostFormatFieldsEnum =
   | 'posts.nodes.pingStatus'
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
+  | 'posts.nodes.singleBlog.fieldGroupName'
   | 'posts.nodes.slug'
   | 'posts.nodes.status'
   | 'posts.nodes.tags.nodes'
@@ -10675,6 +10820,18 @@ type WpPostTypeLabelDetailsFilterInput = {
   readonly useFeaturedImage: InputMaybe<StringQueryOperatorInput>;
   readonly viewItem: InputMaybe<StringQueryOperatorInput>;
   readonly viewItems: InputMaybe<StringQueryOperatorInput>;
+};
+
+/** Field Group */
+type WpPost_Singleblog = WpAcfFieldGroup & {
+  /** The name of the ACF Field Group */
+  readonly fieldGroupName: Maybe<Scalars['String']>;
+  readonly heroImage: Maybe<WpMediaItem>;
+};
+
+type WpPost_SingleblogFilterInput = {
+  readonly fieldGroupName: InputMaybe<StringQueryOperatorInput>;
+  readonly heroImage: InputMaybe<WpMediaItemFilterInput>;
 };
 
 /** The reading setting type */
@@ -11803,6 +11960,7 @@ type WpTagFieldsEnum =
   | 'posts.nodes.pingStatus'
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
+  | 'posts.nodes.singleBlog.fieldGroupName'
   | 'posts.nodes.slug'
   | 'posts.nodes.status'
   | 'posts.nodes.tags.nodes'
@@ -12966,6 +13124,7 @@ type WpUserFieldsEnum =
   | 'posts.nodes.pingStatus'
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
+  | 'posts.nodes.singleBlog.fieldGroupName'
   | 'posts.nodes.slug'
   | 'posts.nodes.status'
   | 'posts.nodes.tags.nodes'
@@ -13406,7 +13565,7 @@ type shoePageQueryVariables = Exact<{
 }>;
 
 
-type shoePageQuery = { readonly allWpMenu: { readonly menus: ReadonlyArray<{ readonly locations: ReadonlyArray<WpMenuLocationEnum | null> | null, readonly name: string | null, readonly slug: string | null, readonly menuItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly order: number | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly databaseId: number, readonly cssClasses: ReadonlyArray<string | null> | null, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null } | null> | null } | null } | null> | null } | null } | null> | null } | null }> }, readonly wpSneaker: { readonly id: string, readonly link: string | null, readonly slug: string | null, readonly title: string | null, readonly uri: string | null, readonly content: string | null, readonly singleSneaker: { readonly galery: ReadonlyArray<{ readonly image: { readonly altText: string | null, readonly localFile: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null> | null } | null } | null };
+type shoePageQuery = { readonly allWpMenu: { readonly menus: ReadonlyArray<{ readonly locations: ReadonlyArray<WpMenuLocationEnum | null> | null, readonly name: string | null, readonly slug: string | null, readonly menuItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly order: number | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly databaseId: number, readonly cssClasses: ReadonlyArray<string | null> | null, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null } | null> | null } | null } | null> | null } | null } | null> | null } | null }> }, readonly wpSneaker: { readonly id: string, readonly link: string | null, readonly slug: string | null, readonly title: string | null, readonly uri: string | null, readonly content: string | null, readonly featuredImage: { readonly node: { readonly localFile: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null, readonly singleSneaker: { readonly galery: ReadonlyArray<{ readonly image: { readonly altText: string | null, readonly localFile: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null> | null } | null } | null };
 
 type shopPageQueryVariables = Exact<{
   id: InputMaybe<Scalars['String']>;

@@ -17,7 +17,14 @@ type setStateArray = [
   string
 ]
 
+export const fetchWithTimeout = (fetchFunc: Function, data: any, timeout: number) => {
+  return Promise.race([
+    fetchFunc(data),
+    new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), timeout))
+  ]);
+}
 export default function CheckoutForm({ }: Props) {
+
 
 
 
@@ -41,15 +48,41 @@ export default function CheckoutForm({ }: Props) {
 
   function checkIsFieldValid(val: string, type: string) {
     if (type === 'Email') {
-      validateEmail(val)
+      return validateEmail(val)
     } else {
-
+      return val !== ''
     }
   }
   function onSubmitHandler() {
-    inputFieldsDataActionArray.forEach(item => {
-      item
-    })
+    const areAllFieldsTrue = inputFieldsDataActionArray.map(item => checkIsFieldValid(item[0], item[2]))
+
+
+    if (areAllFieldsTrue.includes(false)) {
+      alert('All fields must be filled properly')
+    } else {
+      const data = {
+        full_name: nameField,
+        email: emailField,
+        phone: phoneField,
+        text_field: textField
+      }
+      console.log(data)
+
+      //Kad namestim backend
+      // fetchWithTimeout(
+      //   sendFormData,
+      //   {
+      //     full_name: nameField,
+      //     email: emailField,
+      //     phone: phoneField,
+      //     text_field: textField
+      //   },
+      //   10000
+      // )
+    }
+
+
+
   }
 
   const validateEmail = (email: string) => {
@@ -70,6 +103,8 @@ export default function CheckoutForm({ }: Props) {
   async function onSubmit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     setSubmited(true)
+
+    onSubmitHandler()
   }
 
   function choseInputType(field: string) {
