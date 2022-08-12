@@ -4,6 +4,7 @@ import Footer from './Footer'
 import { theme } from '../global-styles/globalTheme'
 import { ThemeProvider } from 'styled-components'
 import '../global-styles/normalize.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface LayoutProps {
   children: any,

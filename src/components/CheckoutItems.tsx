@@ -59,7 +59,7 @@ export default function CheckoutItems({ }: Props) {
 
 
 
-    storeSessionStorageArr.forEach((storeItem: any) => {
+    storeSessionStorageArr && storeSessionStorageArr.forEach((storeItem: any) => {
       allSneakerData.allWpSneaker.nodes.map((sneaker: any) => {
         if (sneaker.id === storeItem.id) {
           arr.push(sneaker)

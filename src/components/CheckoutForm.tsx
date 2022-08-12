@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { CheckoutFormWrapper, InputFieldWrapper, InputField, TextArea, SubmitFormBtn }
   from './CheckoutForm.styled'
+import { Button } from 'react-bootstrap';
+
 type Props = {}
 
 type DataRequestShape = {
@@ -116,6 +118,7 @@ export default function CheckoutForm({ }: Props) {
     }
   }
   return (
+
     <CheckoutFormWrapper>
       {inputFieldsDataActionArray.map((item, index) =>
         <InputFieldWrapper key={item[2]}>
@@ -136,10 +139,9 @@ export default function CheckoutForm({ }: Props) {
         </InputFieldWrapper>
       )}
 
-      <SubmitFormBtn
-        onClick={(e) => onSubmit(e)}>Send Email</SubmitFormBtn>
+      <Button
+        onClick={(e) => onSubmit(e)}>Send Email</Button>
 
     </CheckoutFormWrapper>
-
   )
 }
