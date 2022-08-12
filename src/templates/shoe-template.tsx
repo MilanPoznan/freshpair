@@ -37,7 +37,7 @@ export default function Shoe({ data }: Props) {
             </SingleSize>)}
         </SizesComponentWrapper>
         <div dangerouslySetInnerHTML={{ __html: content }}></div>
-        <AddToCartCTA name={title} id={id} size={size} />
+        <AddToCartCTA name={title} id={id} size={size} isEnabled={size.length !== 0} />
       </SingleShoeLayout>
     </Layout>
   )

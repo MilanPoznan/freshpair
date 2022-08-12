@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { CheckoutFormWrapper, InputFieldWrapper, InputField, TextArea, SubmitFormBtn }
   from './CheckoutForm.styled'
 import { Button } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 
 type Props = {}
 
@@ -119,29 +120,42 @@ export default function CheckoutForm({ }: Props) {
   }
   return (
 
-    <CheckoutFormWrapper>
-      {inputFieldsDataActionArray.map((item, index) =>
-        <InputFieldWrapper key={item[2]}>
-          {
-            item[2] !== 'Message'
-              ? <InputField
-                type={choseInputType(item[2])}
-                value={item[0]}
-                onChange={(e) => item[1](e.target.value)}
-                placeholder={item[2]}
-                isError={false} />
-              : <TextArea
-                value={item[0]}
-                onChange={(e) => item[1](e.target.value)}
-                placeholder={item[2]}
-                isError={false} />
-          }
-        </InputFieldWrapper>
-      )}
+    <>
 
-      <Button
-        onClick={(e) => onSubmit(e)}>Send Email</Button>
+      <CheckoutFormWrapper>
+        <Form>
+          {inputFieldsDataActionArray.map((item, index) =>
+            <InputFieldWrapper key={item[2]}>
+              {
+                item[2] !== 'Message'
+                  // ? <InputField
+                  //   type={choseInputType(item[2])}
+                  //   value={item[0]}
+                  //   onChange={(e) => item[1](e.target.value)}
+                  //   placeholder={item[2]}
+                  //   isError={false} />
+                  ?
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Control type={item[2]} placeholder={item[2]} value={item[0]} onChange={(e) => item[1](e.target.value)} />
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                  </Form.Group>
+                  : <TextArea
+                    value={item[0]}
+                    onChange={(e) => item[1](e.target.value)}
+                    placeholder={item[2]}
+                    isError={false} />
+              }
+            </InputFieldWrapper>
+          )}
 
-    </CheckoutFormWrapper>
+          <Button
+            onClick={(e) => onSubmit(e)}>Send Email</Button>
+
+
+        </Form>
+      </CheckoutFormWrapper>
+
+    </>
   )
 }

@@ -14,6 +14,7 @@ type Props = {
 
 export default function Checkout({ data }: Props) {
 
+
   const { allWpMenu: { menus } } = data
   return (
     <Layout menus={menus[0]}>

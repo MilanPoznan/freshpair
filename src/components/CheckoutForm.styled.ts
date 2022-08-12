@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const CheckoutFormWrapper = styled.div`
-padding-top: 80px;
 `
 
 
@@ -18,6 +17,7 @@ export const SubmitFormBtn = styled.button``
 export const TextArea = styled.textarea<{ isError: boolean }>``
 
 export const CheckoutWrapper = styled.div`
+padding: 100px 24px;
   
 `
 

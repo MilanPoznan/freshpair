@@ -55,8 +55,16 @@ export default function CartItems({ }: Props) {
   const removeFromSessionStorage = (name: string) =>
     storeSessionStorageArr.filter((item: any) => item.name !== name)
 
-  const setNewSessionStorage = (name: string) =>
-    sessionStorage.setItem('store', JSON.stringify(removeFromSessionStorage(name)))
+  const setNewSessionStorage = (name: string) => {
+
+    const xxx = removeFromSessionStorage(name)
+    console.log(333, xxx.length)
+    if (xxx.length === 0) {
+      sessionStorage.clear();
+    } else {
+      sessionStorage.setItem('store', JSON.stringify(xxx))
+    }
+  }
 
   const removeItemsFromState = (name: string) =>
     setActiveItems(removeFromSessionStorage(name))

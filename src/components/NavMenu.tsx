@@ -20,8 +20,7 @@ export default function NavMenu({ isMenuOpen, menuLinks }: Props) {
 
       <LinkWrapper>
         {menuLinks && menuLinks.map(item =>
-          <Link to={item.path}>{item.label}</Link>)}
-
+          <Link key={item.databaseId} to={item.path}>{item.label}</Link>)}
       </LinkWrapper>
 
       <InstaIconLink href="https://www.instagram.com/freshpair_store/?hl=en" target="__blank">

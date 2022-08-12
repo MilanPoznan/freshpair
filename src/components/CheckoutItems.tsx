@@ -80,9 +80,9 @@ export default function CheckoutItems({ }: Props) {
   return (
     <CheckoutItemsWrapper>
       <h2>My items</h2>
-      {orders && orders.map((item: any) =>
+      {orders && orders.map((item: any, index: number) =>
 
-        <SingleCheckoutItem>
+        <SingleCheckoutItem key={item.id}>
           <GatsbyImage image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt="product" />
           <Link to={item.uri}>
             {item.title}

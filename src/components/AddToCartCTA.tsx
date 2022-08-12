@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-export const CtaButton = styled.div`
+export const CtaButton = styled.div<{ isEnabled: boolean }>`
   width: 100%;
   margin: 20px auto;
   height: 50px;
@@ -17,6 +17,8 @@ export const CtaButton = styled.div`
     text-align: center;
     text-transform: uppercase;
     transition: all .3s ease,margin-top 0s ease;
+    pointer-events: ${({ isEnabled }) => isEnabled ? 'auto' : 'none'};
+    opacity: ${({ isEnabled }) => isEnabled ? 1 : 0.5};;
   cursor: pointer;
   &:hover {
     background-color: #fff;
@@ -30,11 +32,14 @@ type Props = {
   name: string
   id: number
   size: string
+  isEnabled: boolean
 }
 
-export default function AddToCartCTA({ name, id, size }: Props) {
+export default function AddToCartCTA({ name, id, size, isEnabled }: Props) {
 
+  console.log(size)
   const storeSessionStorage = sessionStorage.getItem("store")
+  const getItemsArr = storeSessionStorage && JSON.parse(storeSessionStorage)
 
   const [isItemInCart, setIsItemInCart] = useState(false)
   const item = {
@@ -51,21 +56,18 @@ export default function AddToCartCTA({ name, id, size }: Props) {
   }
 
   function addToSessionStorage() {
-    console.log(storeSessionStorage?.length)
+
+    console.log('storeSessionStorage', storeSessionStorage !== null && storeSessionStorage.length)
     if (storeSessionStorage === null || storeSessionStorage.length === 0) {
-      console.log('if')
+      console.log('id')
       const storeArr = []
+      console.log(11111, getItemsArr)
       storeArr.push(item)
-
+      console.log(storeArr)
       sessionStorage.setItem('store', JSON.stringify(storeArr))
-      console.log(sessionStorage)
     } else {
-
-      let getItemsArr = JSON.parse(storeSessionStorage)
-      console.log('getItemsArr', getItemsArr)
-
+      // let getItemsArr = JSON.parse(storeSessionStorage)
       Object.values(getItemsArr).map((singleItem: any) => {
-
         if (singleItem.name === name) {
           alert('Product alrready exist')
           return
@@ -75,8 +77,7 @@ export default function AddToCartCTA({ name, id, size }: Props) {
         }
       })
     }
-
-    // setIsItemInCart(checkIsItemInStorage())
+    setIsItemInCart(checkIsItemInStorage())
 
   }
 
@@ -91,7 +92,7 @@ export default function AddToCartCTA({ name, id, size }: Props) {
 
   return (
 
-    <CtaButton onClick={addToSessionStorage}>{isItemInCart ? "Item in Cart" : "Add To Cart"}</CtaButton>
+    <CtaButton isEnabled={isEnabled} onClick={addToSessionStorage}>{isItemInCart ? "Item in Cart" : "Add To Cart"}</CtaButton>
 
   )
 }
