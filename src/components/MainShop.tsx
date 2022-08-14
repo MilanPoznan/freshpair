@@ -15,7 +15,8 @@ import {
   CategorySelectBox,
   SingleCategoryWrapper,
   CategorySelectOptions,
-  DesktopCategories
+  DesktopCategories,
+  SingleProductImageWrapper
 } from './MainShop.styled'
 
 type Props = {
@@ -83,7 +84,6 @@ export default function MainShop({ shopData, allWpCategory }: Props) {
       return acc
     }, {})
 
-    console.log(finalShoesShape)
     return finalShoesShape
   }
   // const isCheckboxActive = (item: string) =>
@@ -126,9 +126,6 @@ export default function MainShop({ shopData, allWpCategory }: Props) {
   }, [activeCategory])
 
 
-  function removeDuplicatesFromArr() {
-
-  }
 
   function filterProducts() {
 
@@ -152,7 +149,6 @@ export default function MainShop({ shopData, allWpCategory }: Props) {
       //Bukvalno neoptimizovano resenje al jbg mora se zuri. Refaktorisati ako se ikad nadje vremena
       //Ovako brisem duplikate iz arr ako neko bude citao :D 
       const uniq = [...new Set(finalArr)]
-      console.log(uniq)
 
       setActiveProducts(uniq)
       console.log('filtered activeProducts', uniq)
@@ -199,7 +195,9 @@ export default function MainShop({ shopData, allWpCategory }: Props) {
 
         {activeProducts && activeProducts.map(item => item &&
           <SingleProduct key={item.id}>
-            <GatsbyImage alt="shoes featured" image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
+            <SingleProductImageWrapper>
+              <GatsbyImage alt="shoes featured" image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
+            </SingleProductImageWrapper>
             <Link to={item.link}>{item.title}</Link>
           </SingleProduct>
 

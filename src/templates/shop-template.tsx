@@ -38,7 +38,6 @@ export default function Shop({ data, location }: any) {
 
   return (
     <Layout menus={menus[0]}>
-      Shop template
       <MainShop shopData={nodes} allWpCategory={allWpCategory} />
     </Layout>
   )

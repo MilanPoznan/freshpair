@@ -42,8 +42,12 @@ export default function CheckoutItems({ }: Props) {
 
 
   function removeHandler(id: string) {
-
-    sessionStorage.setItem('store', JSON.stringify(removeFromSessionStorage(id)))
+    const cart = removeFromSessionStorage(id)
+    if (cart.length === 0) {
+      sessionStorage.clear();
+    } else {
+      sessionStorage.setItem('store', JSON.stringify(cart))
+    }
 
 
     const filteredArr: any = orders.filter((item: any) => item.id !== id)
@@ -51,7 +55,6 @@ export default function CheckoutItems({ }: Props) {
   }
 
 
-  const state = {}
   useEffect(() => {
 
     let arr: any[] = [];

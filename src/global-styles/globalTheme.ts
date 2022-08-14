@@ -16,6 +16,7 @@ export const theme: DefaultTheme = {
     highlight: '#FBFAF7',
     white: '#FFFFFF',
     white65: 'rgba(255,255,255, 0.65)',
-    yellow: '#FFFF83'
+    yellow: '#FFFF83',
+    borderColor: '#2e2c2c'
   }
 }

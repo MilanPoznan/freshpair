@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Heading1 = styled.h1<{ hasMarginBottom?: boolean, hasDifferentFontSize?: boolean }>`
   margin: 0;
   margin-bottom: ${({ hasMarginBottom }) => hasMarginBottom ? '58px' : '0px'};
-  font-family: 'Meethlake';
+  font-family: 'DynaPuff', cursive;
   font-style: normal;
   font-weight: 400;
   font-size: ${({ hasDifferentFontSize }) => hasDifferentFontSize ? '9.4vw' : '46px'};
@@ -31,7 +31,7 @@ export const Heading1 = styled.h1<{ hasMarginBottom?: boolean, hasDifferentFontS
 
 export const Heading2 = styled.h2`
   margin: 0;
-  font-family: 'BRegular';
+  font-family: 'DynaPuff', cursive;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
@@ -57,7 +57,7 @@ export const Heading2 = styled.h2`
 
 export const Heading3 = styled.h3`
   margin: 0;
-  font-family: 'BRegular';
+  font-family: 'DynaPuff', cursive;
   font-style: normal;
   font-weight: 400;
   font-size: 26px;
@@ -82,7 +82,7 @@ export const Heading3 = styled.h3`
 `
 export const Heading4 = styled.h4`
   margin: 0;
-  font-family: 'BRegular';
+  font-family: 'DynaPuff', cursive;
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
@@ -104,7 +104,7 @@ export const Heading4 = styled.h4`
 `
 export const Heading5 = styled.h5`
   margin: 0;
-  font-family: 'BRegular';
+  font-family: 'DynaPuff', cursive;
   font-style: normal;
   font-size: 16px;
   line-height: 26px;
@@ -113,7 +113,7 @@ export const Heading5 = styled.h5`
 `
 export const Heading6 = styled.h6`
   margin: 0;
-  font-family: 'BRegular';
+  font-family: 'DynaPuff', cursive;
   font-style: normal;
   font-size: 16px;
   line-height: 26px;
@@ -124,7 +124,7 @@ export const Heading6 = styled.h6`
 
 export const BigPWrapper = styled.div`
   margin: 0;
-  font-family: var(--acumin);
+  font-family: var(--regular);
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -133,7 +133,7 @@ export const BigPWrapper = styled.div`
 `
 export const SmallPWrapper = styled.div`
   margin: 0;
-  font-family: var(--acumin);
+  font-family: var(--regular);
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -143,7 +143,7 @@ export const SmallPWrapper = styled.div`
 
 export const BigP = styled.p`
   margin: 0;
-  font-family: var(--acumin);
+  font-family: var(--regular);
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -152,7 +152,7 @@ export const BigP = styled.p`
 
 export const SmallP = styled.p`
   margin: 0;
-  font-family: var(--acumin);
+  font-family: var(--regular);
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -193,7 +193,7 @@ padding: 0px 30px 0px 30px;
 
 export const UppercaseLabel = styled.p<{ hasBiggerMarginBottom?: boolean }>`
 margin-bottom: ${({ hasBiggerMarginBottom }) => hasBiggerMarginBottom ? '30px' : '20px'};
-  font-family: var(--acumin);
+  font-family: var(--regular);
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
@@ -220,7 +220,7 @@ margin-bottom: ${({ hasBiggerMarginBottom }) => hasBiggerMarginBottom ? '30px' :
 `
 
 export const ContactInfoP = styled.p`
-  font-family: var(--acumin);
+  font-family: var(--regular);
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -252,38 +252,6 @@ export const BookingWidgetWrapper = styled.div`
     padding: 140px 0;
   }
 `
-export const OpeningHoursRow = styled.div<{ hasBigerMargin: boolean }>`
-  display: flex;
-  width: 100%;
-  margin-bottom: 23px;
-  font-family: ${({ hasBigerMargin }) => !hasBigerMargin ? 'var(--light)' : 'var(--regular)'};
-  font-style: normal;
-  font-weight: ${({ hasBigerMargin }) => hasBigerMargin ? '300' : '400'};
-  font-size: ${({ hasBigerMargin }) => hasBigerMargin ? '16px' : '14px'};
-  line-height: ${({ hasBigerMargin }) => hasBigerMargin ? '34px' : '15px'};
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-  span {
-    position: relative;
-    bottom: ${({ hasBigerMargin }) => hasBigerMargin ? '12px' : '3px'};
-    border-bottom: 1px dashed black;
-    flex-grow: 1;
-  }
-  div {
-    &:first-child {
-      margin-right: ${({ hasBigerMargin }) => hasBigerMargin ? '16px' : '5px'};
-    }
-    &:last-child {
-      margin-left: ${({ hasBigerMargin }) => hasBigerMargin ? '16px' : '5px'};
-    }
-  }
-  @media ${device.tablet} {
-    width: 100%;
-    margin-bottom: ${({ hasBigerMargin }) => hasBigerMargin ? '10px' : '17px'};
-  }
-`
 
 export const NotFoundPageWrapper = styled.section`
   display: flex;
@@ -303,7 +271,7 @@ export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
 
   h2 {
     margin: 0 0 24px 0;
-    font-family: 'BRegular';
+    font-family: 'DynaPuff', cursive;
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
@@ -328,7 +296,7 @@ export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
   }
   h3 {
     margin: 0 0 24px 0;
-    font-family: 'BRegular';
+    font-family: 'DynaPuff', cursive;
     font-style: normal;
     font-weight: 400;
     font-size: 26px;
@@ -353,7 +321,7 @@ export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
   }
   h4 {
     margin: 0 0 24px 0;
-    font-family: 'BRegular';
+    font-family: 'DynaPuff', cursive;
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
@@ -375,7 +343,7 @@ export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
   }
   h5 {
     margin: 0 0 24px 0;
-    font-family: 'BRegular';
+    font-family: 'DynaPuff', cursive;
     font-style: normal;
     font-size: 16px;
     line-height: 26px;
@@ -384,7 +352,7 @@ export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
   }
   h6 {
     margin: 0 0 24px 0;
-    font-family: 'BRegular';
+    font-family: 'DynaPuff', cursive;
     font-style: normal;
     font-size: 16px;
     line-height: 26px;
@@ -393,7 +361,7 @@ export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
     text-transform: uppercase;
   }
   p, a, ul, ol {
-    font-family: var(--acumin);
+    font-family: var(--regular);
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
@@ -419,7 +387,7 @@ export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
     }
   }
   strong, b {
-    font-family: var(--acumin);
+    font-family: var(--regular);
     font-weight: 700;
     font-style: normal;
   }

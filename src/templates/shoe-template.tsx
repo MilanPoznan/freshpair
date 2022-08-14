@@ -6,12 +6,11 @@ import Layout from '../components/Layout'
 import SneakerSlider from '../components/SneakerSlider'
 import AddToCartCTA from '../components/AddToCartCTA'
 import HeroImage from '../components/HeroImage'
-import { SizesComponentWrapper, SingleSize, yeezy } from '../components/SizesComponent.styled'
+import { SizesComponentWrapper, SizeAndCtaWrapp, SingleSize, yeezy, ContentShoeWrapp, SingleShoeLayout } from '../components/SizesComponent.styled'
+
+import { ContentWrapper, WYSIWYGWrapper, Heading1 } from '../global-styles/globalComponents'
 
 
-export const SingleShoeLayout = styled.div`
-padding: 24px;
-`
 type Props = {
   data: any
 }
@@ -29,15 +28,19 @@ export default function Shoe({ data }: Props) {
       {galery && hasGallery && <SneakerSlider data={galery}></SneakerSlider>}
       {!hasGallery && <HeroImage featuredImage={featuredImage.node.localFile.childImageSharp.gatsbyImageData} />}
       <SingleShoeLayout>
-        <h1>{title}</h1>
-        <SizesComponentWrapper>
-          {yeezy.map((item: string) =>
-            <SingleSize isActive={size === item} onClick={() => setSize(item)}>
-              {item}
-            </SingleSize>)}
-        </SizesComponentWrapper>
-        <div dangerouslySetInnerHTML={{ __html: content }}></div>
-        <AddToCartCTA name={title} id={id} size={size} isEnabled={size.length !== 0} />
+        <ContentShoeWrapp>
+          <Heading1>{title}</Heading1>
+          <WYSIWYGWrapper dangerouslySetInnerHTML={{ __html: content }}></WYSIWYGWrapper>
+        </ContentShoeWrapp>
+        <SizeAndCtaWrapp>
+          <SizesComponentWrapper>
+            {yeezy.map((item: string) =>
+              <SingleSize isActive={size === item} onClick={() => setSize(item)}>
+                {item}
+              </SingleSize>)}
+          </SizesComponentWrapper>
+          <AddToCartCTA name={title} id={id} size={size} isEnabled={size.length !== 0} />
+        </SizeAndCtaWrapp>
       </SingleShoeLayout>
     </Layout>
   )

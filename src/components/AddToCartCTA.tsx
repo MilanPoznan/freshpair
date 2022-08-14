@@ -59,11 +59,8 @@ export default function AddToCartCTA({ name, id, size, isEnabled }: Props) {
 
     console.log('storeSessionStorage', storeSessionStorage !== null && storeSessionStorage.length)
     if (storeSessionStorage === null || storeSessionStorage.length === 0) {
-      console.log('id')
       const storeArr = []
-      console.log(11111, getItemsArr)
       storeArr.push(item)
-      console.log(storeArr)
       sessionStorage.setItem('store', JSON.stringify(storeArr))
     } else {
       // let getItemsArr = JSON.parse(storeSessionStorage)

@@ -57,12 +57,11 @@ export default function CartItems({ }: Props) {
 
   const setNewSessionStorage = (name: string) => {
 
-    const xxx = removeFromSessionStorage(name)
-    console.log(333, xxx.length)
-    if (xxx.length === 0) {
+    const cart = removeFromSessionStorage(name)
+    if (cart.length === 0) {
       sessionStorage.clear();
     } else {
-      sessionStorage.setItem('store', JSON.stringify(xxx))
+      sessionStorage.setItem('store', JSON.stringify(cart))
     }
   }
 
