@@ -16,7 +16,8 @@ import {
   HamburgerButton,
   LogoWrapper,
   CartHeaderWrapper,
-  CTAWrapper
+  CTAWrapper,
+  CartItemCounter
 } from './Header.styled'
 
 /***** Menu props *****/
@@ -37,6 +38,7 @@ export type MenuProps = {
     nodes: MenuItemsProps[]
   };
 }
+
 
 export default function Header({ menuItems }: any) {
 
@@ -61,9 +63,41 @@ export default function Header({ menuItems }: any) {
   }, [windowWidth])
 
 
+
+  // CART ITEM SECTIONS
+  const [activeItems, setActiveItems] = useState([])
+
+  const storeSessionStorage = sessionStorage.getItem("store")
+  let storeSessionStorageArr = storeSessionStorage && JSON.parse(storeSessionStorage)
+
+  const removeFromSessionStorage = (name: string) => {
+    return storeSessionStorageArr.filter((item: any) => item.name !== name)
+  }
+
+  const setNewSessionStorage = (name: string) => {
+
+    const cart = removeFromSessionStorage(name)
+    if (cart.length === 0) {
+      sessionStorage.clear();
+    } else {
+      sessionStorage.setItem('store', JSON.stringify(cart))
+    }
+  }
+
+  const removeItemsFromState = (name: string) => {
+    setActiveItems(removeFromSessionStorage(name))
+  }
+
+  useEffect(() => {
+    storeSessionStorage && setActiveItems(JSON.parse(storeSessionStorage))
+  }, [])
+
+
+
   return (
     <Wrapper>
       <LogoWrapper>
+
         <Link to="/">
           <Logo />
         </Link>
@@ -72,15 +106,20 @@ export default function Header({ menuItems }: any) {
       <NavMenu isMenuOpen={isMenuOpen} menuLinks={menuItems} />
 
       <CTAWrapper>
-        <CartHeaderWrapper>
-        </CartHeaderWrapper>
+        {activeItems.length !== 0 && <CartItemCounter>{activeItems.length}</CartItemCounter>}
         <CartHeaderWrapper onClick={() => setIsCartMenuOpen(isCartMenuOpen => !isCartMenuOpen)} >
           <img src={CartImage} />
         </CartHeaderWrapper>
         <HamburgerButton onClick={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)} isMenuOpen={isMenuOpen}><span /></HamburgerButton>
       </CTAWrapper>
 
-      {isCartMenuOpen && <CartItems />}
+      {isCartMenuOpen
+        && <CartItems
+          activeItems={activeItems}
+          setNewSessionStorage={setNewSessionStorage}
+          removeItemsFromState={removeItemsFromState}
+          storeSessionStorage={storeSessionStorage}
+        />}
     </Wrapper>
   )
 }

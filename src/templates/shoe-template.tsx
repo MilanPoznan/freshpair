@@ -35,7 +35,7 @@ export default function Shoe({ data }: Props) {
         <SizeAndCtaWrapp>
           <SizesComponentWrapper>
             {yeezy.map((item: string) =>
-              <SingleSize isActive={size === item} onClick={() => setSize(item)}>
+              <SingleSize key={item} isActive={size === item} onClick={() => setSize(item)}>
                 {item}
               </SingleSize>)}
           </SizesComponentWrapper>

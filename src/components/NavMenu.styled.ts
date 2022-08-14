@@ -15,36 +15,34 @@ export const NavMenuWrapper = styled.div<{ isMenuOpen: boolean }>`
   top: 80px;
   z-index: 1000;
   padding: 20vh 24px;
-
   a { 
-    font-size: 32px;
+    position: relative;
+    font-size: 28px;
+    text-transform: uppercase;
     margin: 12px auto;
     text-decoration: none;
     color: ${({ theme }) => theme.colors.black60};
-
   }
   [aria-current] {
     color: ${({ theme }) => theme.colors.black};
   }
 
-    @media ${device.desktopS} {
-      width: fit-content;
-      flex-flow: row;
-      top: 0;
-      height: 80px;
-      padding: 0;
-      //Center it 
-      margin-left: auto;
-      margin-right: auto;
-      left: 0;
-      right: 0;
-
-      text-align: center;
-       a {
-        font-size: 24px;
-        margin: 0 20px;
-        
-       }
+  @media ${device.desktopS} {
+    width: fit-content;
+    flex-flow: row;
+    top: 0;
+    height: 79px;
+    padding: 0;
+    //Center it 
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+      a {
+      font-size: 16px;
+      margin: 0 20px;
+      }
     }
 `
 

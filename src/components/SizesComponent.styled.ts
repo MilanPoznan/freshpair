@@ -44,7 +44,7 @@ export const SingleSize = styled.div<{ isActive: boolean }>`
 export const SingleShoeLayout = styled.div`
   padding: 24px;
 position: relative;
-  @media ${device.desktopS} {
+  @media ${device.tabletL} {
     display: flex;
   }
   @media ${device.desktop} {
@@ -58,12 +58,17 @@ position: relative;
 `
 
 export const ContentShoeWrapp = styled.div`
-  width: 50%;
-  padding: 0 3%;
+  @media ${device.tabletL} {
+    width: 50%;
+    padding: 0 3%;
+  }
+
 `
 
 export const SizeAndCtaWrapp = styled.div`
-  width: 50%;
-  padding: 0 3%;
+  @media ${device.tabletL} {
+    width: 50%;
+    padding: 0 3%;
+  }
 
 `

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { CheckoutItemsWrapper, SingleCheckoutItem, RemoveIcon } from './CheckoutForm.styled'
+import { CheckoutItemsWrapper, SingleCheckoutItem, RemoveIcon, ContentItemWrapp } from './CheckoutForm.styled'
 type Props = {}
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { UppercaseLabel } from '../global-styles/globalComponents'
+
+
 export default function CheckoutItems({ }: Props) {
 
   const storeSessionStorage = sessionStorage.getItem("store")
@@ -82,14 +85,17 @@ export default function CheckoutItems({ }: Props) {
 
   return (
     <CheckoutItemsWrapper>
-      <h2>My items</h2>
+      <UppercaseLabel> Items in cart</UppercaseLabel>
       {orders && orders.map((item: any, index: number) =>
 
         <SingleCheckoutItem key={item.id}>
-          <GatsbyImage image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt="product" />
-          <Link to={item.uri}>
-            {item.title}
-          </Link>
+          <ContentItemWrapp>
+            <GatsbyImage image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt="product" />
+            <Link to={item.uri}>
+              {item.title}
+            </Link>
+
+          </ContentItemWrapp>
           <RemoveIcon onClick={() => removeHandler(item.id)}></RemoveIcon>
         </SingleCheckoutItem>
       )}

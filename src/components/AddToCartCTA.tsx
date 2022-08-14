@@ -37,7 +37,6 @@ type Props = {
 
 export default function AddToCartCTA({ name, id, size, isEnabled }: Props) {
 
-  console.log(size)
   const storeSessionStorage = sessionStorage.getItem("store")
   const getItemsArr = storeSessionStorage && JSON.parse(storeSessionStorage)
 
@@ -57,7 +56,6 @@ export default function AddToCartCTA({ name, id, size, isEnabled }: Props) {
 
   function addToSessionStorage() {
 
-    console.log('storeSessionStorage', storeSessionStorage !== null && storeSessionStorage.length)
     if (storeSessionStorage === null || storeSessionStorage.length === 0) {
       const storeArr = []
       storeArr.push(item)
@@ -75,6 +73,7 @@ export default function AddToCartCTA({ name, id, size, isEnabled }: Props) {
       })
     }
     setIsItemInCart(checkIsItemInStorage())
+    window.location.reload();
 
   }
 

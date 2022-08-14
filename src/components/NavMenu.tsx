@@ -25,7 +25,6 @@ export default function NavMenu({ isMenuOpen, menuLinks }: Props) {
 
       <InstaIconLink href="https://www.instagram.com/freshpair_store/?hl=en" target="__blank">
         <InstaIcon src={instaUrl} />
-
       </InstaIconLink>
     </NavMenuWrapper>
 

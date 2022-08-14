@@ -6,16 +6,13 @@ import { SneakersData } from '../templates/shop-template'
 import CategoryCheckBox from './CategoryCheckBox'
 
 import {
-  SearchForOptions,
   ChildCat,
-  SingleMainCatAll,
   MainShopWrapper,
   CategoryFiltersWrapper,
   AllProductsBox, SingleProduct, ParrentCat,
   CategorySelectBox,
   SingleCategoryWrapper,
   CategorySelectOptions,
-  DesktopCategories,
   SingleProductImageWrapper
 } from './MainShop.styled'
 
@@ -192,7 +189,6 @@ export default function MainShop({ shopData, allWpCategory }: Props) {
 
 
       <AllProductsBox>
-
         {activeProducts && activeProducts.map(item => item &&
           <SingleProduct key={item.id}>
             <SingleProductImageWrapper>

@@ -19,7 +19,6 @@ export default function Checkout({ data }: Props) {
   return (
     <Layout menus={menus[0]}>
       <CheckoutWrapper>
-        <CheckoutItems />
         <CheckoutForm />
       </CheckoutWrapper>
     </Layout>

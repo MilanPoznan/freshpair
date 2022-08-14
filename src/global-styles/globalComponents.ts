@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Heading1 = styled.h1<{ hasMarginBottom?: boolean, hasDifferentFontSize?: boolean }>`
   margin: 0;
   margin-bottom: ${({ hasMarginBottom }) => hasMarginBottom ? '58px' : '0px'};
-  font-family: 'DynaPuff', cursive;
+  font-family: 'billionDreams', cursive;
   font-style: normal;
   font-weight: 400;
   font-size: ${({ hasDifferentFontSize }) => hasDifferentFontSize ? '9.4vw' : '46px'};
@@ -31,7 +31,7 @@ export const Heading1 = styled.h1<{ hasMarginBottom?: boolean, hasDifferentFontS
 
 export const Heading2 = styled.h2`
   margin: 0;
-  font-family: 'DynaPuff', cursive;
+  font-family: 'billionDreams', cursive;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
@@ -57,7 +57,7 @@ export const Heading2 = styled.h2`
 
 export const Heading3 = styled.h3`
   margin: 0;
-  font-family: 'DynaPuff', cursive;
+  font-family: 'billionDreams', cursive;
   font-style: normal;
   font-weight: 400;
   font-size: 26px;
@@ -82,7 +82,7 @@ export const Heading3 = styled.h3`
 `
 export const Heading4 = styled.h4`
   margin: 0;
-  font-family: 'DynaPuff', cursive;
+  font-family: 'billionDreams', cursive;
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
@@ -104,7 +104,7 @@ export const Heading4 = styled.h4`
 `
 export const Heading5 = styled.h5`
   margin: 0;
-  font-family: 'DynaPuff', cursive;
+  font-family: 'billionDreams', cursive;
   font-style: normal;
   font-size: 16px;
   line-height: 26px;
@@ -113,7 +113,7 @@ export const Heading5 = styled.h5`
 `
 export const Heading6 = styled.h6`
   margin: 0;
-  font-family: 'DynaPuff', cursive;
+  font-family: 'billionDreams', cursive;
   font-style: normal;
   font-size: 16px;
   line-height: 26px;
@@ -235,43 +235,13 @@ export const GeneralButton = styled.div`
   }
 `
 
-// We will keep this until the client decides to remove VIP booking page
-export const BookingWidgetWrapper = styled.div`
-  padding: 60px 0;
-
-  @media ${device.tablet} {
-    padding: 100px 0;
-  }
-  @media ${device.tabletL} {
-    padding: 120px 0;
-  }
-  @media ${device.desktopS} {
-    padding: 130px 0;
-  }
-  @media ${device.desktopL} {
-    padding: 140px 0;
-  }
-`
-
-export const NotFoundPageWrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: calc(100vh - 89px);
-  background-color: ${({ theme }) => theme.colors.primary};
-
-  @media ${device.tabletL} {
-    height: calc(100vh - 109px);
-  }
-`
 
 // We can use this styled component wherever we have a WYSIWYG editor
 export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
 
   h2 {
     margin: 0 0 24px 0;
-    font-family: 'DynaPuff', cursive;
+    font-family: 'billionDreams', cursive;
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
@@ -296,7 +266,7 @@ export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
   }
   h3 {
     margin: 0 0 24px 0;
-    font-family: 'DynaPuff', cursive;
+    font-family: 'billionDreams', cursive;
     font-style: normal;
     font-weight: 400;
     font-size: 26px;
@@ -321,7 +291,7 @@ export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
   }
   h4 {
     margin: 0 0 24px 0;
-    font-family: 'DynaPuff', cursive;
+    font-family: 'billionDreams', cursive;
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
@@ -343,7 +313,7 @@ export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
   }
   h5 {
     margin: 0 0 24px 0;
-    font-family: 'DynaPuff', cursive;
+    font-family: 'billionDreams', cursive;
     font-style: normal;
     font-size: 16px;
     line-height: 26px;
@@ -352,7 +322,7 @@ export const WYSIWYGWrapper = styled.div<{ isPrivacyPolicy?: boolean }>`
   }
   h6 {
     margin: 0 0 24px 0;
-    font-family: 'DynaPuff', cursive;
+    font-family: 'billionDreams', cursive;
     font-style: normal;
     font-size: 16px;
     line-height: 26px;

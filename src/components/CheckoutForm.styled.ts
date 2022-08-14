@@ -1,43 +1,58 @@
 import styled from 'styled-components'
-
+import { device } from '../global-styles/mediaQueries'
 export const CheckoutFormWrapper = styled.div`
 `
 
 
 export const InputFieldWrapper = styled.div``
 
-export const InputField = styled.input<{ isError: boolean }>
-  ``
-
-export const InputLabel = styled.div``
 
 
-export const SubmitFormBtn = styled.button``
+export const TextArea = styled.textarea<{ isError: boolean }>`
+  width: 100%;
+  border: 1px solid #ced4da;
+  height: 120px;
+  padding: 8px;
 
-export const TextArea = styled.textarea<{ isError: boolean }>``
+`
 
 export const CheckoutWrapper = styled.div`
-padding: 100px 24px;
-  
+  padding: 100px 24px;
+  @media ${device.tablet} {
+    max-width: 80%;
+    min-width: 400px;
+    margin: 0 auto;
+  }
 `
 
 export const CheckoutItemsWrapper = styled.div`
-padding: 100px 24px;
+padding: 10px 0px 0px;
 `
 
+export const ContentItemWrapp = styled.div`
+display: flex;
+align-items: center;
+`
 export const SingleCheckoutItem = styled.div`
 display: flex;
 align-items: center;
-justify-content: space-evenly;
-margin: 20px 0;
+justify-content: space-between;
+align-items: center;
+padding-right: 12px;
+margin: 20px 0 30px;
+box-shadow: 4px 14px 25px 0px rgba(0,0,0,0.4);
+
+
+/* border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor}; */
 a {
   text-decoration: none;
   color: ${({ theme }) => theme.colors.accent_primary};
-  font-size: 24px;
+  font-size: 20px;
 }
 .gatsby-image-wrapper {
   width: 70px;
   height: 70px;
+  margin-right: 12px;
 }
 
 `

@@ -18,6 +18,7 @@ position: relative;
 `
 
 export const AllProductsBox = styled.div`
+position: relative;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -27,6 +28,13 @@ export const AllProductsBox = styled.div`
     width: calc(100% - 280px);
     float: right;
     justify-content: flex-start;
+    &:before {
+      content: "Products";
+      position: absolute;
+      left: 20px;
+      top: -50px;
+      font-size: 24px;
+    }
   }
 
 `
@@ -41,7 +49,8 @@ export const SingleProduct = styled.div`
     color: ${({ theme }) => theme.colors.borderColor};
     text-transform: uppercase;
     font-weight: 500;
-    font-family: 'DynaPuff', cursive;
+    font-family: 'billionDreams', cursive;
+    font-weight: bold;
     max-width: 80%;
     margin: 0 auto;
     &:before {
@@ -191,19 +200,35 @@ export const CategorySelectOptions = styled.div<{ isPickCategoryOpen: boolean }>
   border-top: 0px;
 
   @media ${device.desktopS} {
+    position: relative;
     position: fixed;
     display: flex;
     flex-flow: column;
     left: 0px;
-    top: 79px;
+    top: 160px;
     width: 260px;
-    background-color: ${({ theme }) => theme.colors.highlight};
+
+
+    /* background-color: ${({ theme }) => theme.colors.highlight}; */
     min-height: calc(100vh - 80px);
     height: calc(100vh - 80px);
+
     border: none;
     border-right: 1px solid ${({ theme }) => theme.colors.gray};
-
-
+    padding-top: 4px;
+    overflow: initial;
+    /* 
+    OPcija 2 
+    border-radius: 10px;
+    box-shadow: 4px 14px 25px 0px rgba(0,0,0,0.4);
+     */
+    &:before {
+      content: 'Filters';
+      position: absolute;
+      font-size: 24px;
+      top: -46px;
+      z-index: 100;
+    }
   }
 
 `

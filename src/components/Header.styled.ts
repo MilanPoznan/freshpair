@@ -9,15 +9,12 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
-  /* grid-template-columns: 1fr auto 1fr; */
   width: 100%;
   background-color: ${({ theme }) => theme.colors.highlight};
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
   z-index: 10;
   height: 80px;
   @media ${device.desktopS} {
-    /* grid-template-columns: auto 1fr; */
-    /* grid-template-rows: auto auto; */
   }
 `
 
@@ -85,6 +82,7 @@ export const SocialsComponentWrapper = styled.div`
 `
 
 export const CTAWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
 
@@ -95,9 +93,25 @@ export const CartHeaderWrapper = styled.div`
   width: 40px;
   height: 40px;
   margin-right: 20px;
+  cursor: pointer;
 
   img {
     width: 100%;
     height: 100%;
   }
+`
+
+export const CartItemCounter = styled.div`
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  font-size: 12px;
+  left: 30px;
+  bottom: -11px;
+  background-color: ${({ theme }) => theme.colors.black};
+  color: white;
+  border-radius: 50%;
 `
