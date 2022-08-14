@@ -8,7 +8,7 @@ import AddToCartCTA from '../components/AddToCartCTA'
 import HeroImage from '../components/HeroImage'
 import { SizesComponentWrapper, SizeAndCtaWrapp, SingleSize, yeezy, ContentShoeWrapp, SingleShoeLayout } from '../components/SizesComponent.styled'
 
-import { ContentWrapper, WYSIWYGWrapper, Heading1 } from '../global-styles/globalComponents'
+import { WYSIWYGWrapper, Heading1 } from '../global-styles/globalComponents'
 
 
 type Props = {
@@ -25,6 +25,7 @@ export default function Shoe({ data }: Props) {
 
   return (
     <Layout menus={menus[0]}>
+
       {galery && hasGallery && <SneakerSlider data={galery}></SneakerSlider>}
       {!hasGallery && <HeroImage featuredImage={featuredImage.node.localFile.childImageSharp.gatsbyImageData} />}
       <SingleShoeLayout>

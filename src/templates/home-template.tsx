@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import HeroSection from '../components/HeroSection'
 import Layout from '../components/Layout'
+import AboutUs from '../components/AboutUs'
 
 import { MenuProps } from '../components/Header'
 
@@ -16,6 +17,7 @@ export default function HomePage({ data, location }: any) {
 
   return (<Layout menus={menus[0]}>
     <HeroSection heroData={categoryGroup} />
+    <AboutUs content={aboutUs} />
     <div>homepage</div>
 
 

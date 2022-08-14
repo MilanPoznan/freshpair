@@ -175,6 +175,7 @@ export const CategorySelectBox = styled.div<{ isOpen: boolean }>`
   padding: 0 12px;
   color: ${({ theme }) => theme.colors.borderColor};
   font-weight: bold;
+  font-family: 'Nunito Sans', sans-serif;
   svg {
     width: 20px;
     transition: 0.3s;
@@ -198,6 +199,7 @@ export const CategorySelectOptions = styled.div<{ isPickCategoryOpen: boolean }>
   max-height: 400px;
   overflow-y: scroll;
   border-top: 0px;
+  font-family: 'Nunito Sans', sans-serif;
 
   @media ${device.desktopS} {
     position: relative;

@@ -22,6 +22,8 @@ export const NavMenuWrapper = styled.div<{ isMenuOpen: boolean }>`
     margin: 12px auto;
     text-decoration: none;
     color: ${({ theme }) => theme.colors.black60};
+    font-family: 'Nunito Sans', sans-serif;
+
   }
   [aria-current] {
     color: ${({ theme }) => theme.colors.black};
