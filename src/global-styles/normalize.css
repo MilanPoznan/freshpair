@@ -7,6 +7,9 @@
  */
 
 
+a:hover {
+  color: #c4a44c;
+}
 
 :root {
   --light: 'Roboto', sans-serif;

@@ -23,6 +23,10 @@ export const NavMenuWrapper = styled.div<{ isMenuOpen: boolean }>`
     text-decoration: none;
     color: ${({ theme }) => theme.colors.black60};
     font-family: 'Nunito Sans', sans-serif;
+    transition: 0.3s;
+    &:hover {
+      color: ${({ theme }) => theme.colors.gold} !important;
+    }
 
   }
   [aria-current] {
@@ -44,6 +48,9 @@ export const NavMenuWrapper = styled.div<{ isMenuOpen: boolean }>`
       a {
       font-size: 16px;
       margin: 0 20px;
+      &:hover {
+       color: ${({ theme }) => theme.colors.gold};
+      }
       }
     }
 `

@@ -37,10 +37,12 @@ export type MenuProps = {
   menuItems: {
     nodes: MenuItemsProps[]
   };
+  isCheckout?: boolean
 }
 
 
-export default function Header({ menuItems }: any) {
+export default function Header({ menuItems, isCheckout }: any) {
+
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   const [isCartMenuOpen, setIsCartMenuOpen] = useState<boolean>(false)
@@ -106,10 +108,11 @@ export default function Header({ menuItems }: any) {
       <NavMenu isMenuOpen={isMenuOpen} menuLinks={menuItems} />
 
       <CTAWrapper>
-        {activeItems.length !== 0 && <CartItemCounter>{activeItems.length}</CartItemCounter>}
-        <CartHeaderWrapper onClick={() => setIsCartMenuOpen(isCartMenuOpen => !isCartMenuOpen)} >
+        {!isCheckout && activeItems.length !== 0 && <CartItemCounter>{activeItems.length}</CartItemCounter>}
+        {!isCheckout && <CartHeaderWrapper onClick={() => setIsCartMenuOpen(isCartMenuOpen => !isCartMenuOpen)} >
           <img src={CartImage} />
         </CartHeaderWrapper>
+        }
         <HamburgerButton onClick={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)} isMenuOpen={isMenuOpen}><span /></HamburgerButton>
       </CTAWrapper>
 

@@ -12,6 +12,7 @@ import Seo from './Seo'
 interface LayoutProps {
   children: any,
   menus: MenuProps
+  isCheckout?: boolean
 }
 
 export const Main = styled.main`
@@ -20,15 +21,15 @@ flex-flow: column;
 `
 
 
-export default function Layout({ children, menus }: LayoutProps) {
+export default function Layout({ children, menus, isCheckout }: LayoutProps) {
 
   const { menuItems: { nodes } } = menus
 
   return (
     <ThemeProvider theme={theme}>
-      <Seo meta={[]} description='aaaa' title='aaaaaaaa' pageTitle="PTitle" />
+      <Seo meta={[]} description='aaaa' title='Freshpair' pageTitle="Freshpair" />
       <Main>
-        <Header menuItems={nodes} />
+        <Header menuItems={nodes} isCheckout={isCheckout} />
         {children}
         <Footer />
       </Main>

@@ -54,7 +54,8 @@ export const FirstImageWrapper = styled.div`
     color: ${({ theme }) => theme.colors.black};
     text-decoration: none;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 24px;
+    bottom: 12px;
 
   }
   text-decoration: none;

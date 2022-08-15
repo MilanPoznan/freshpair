@@ -8,16 +8,17 @@ import { graphql } from 'gatsby'
 
 type Props = {
   data: any
+  path: string
 }
 
 
 
-export default function Checkout({ data }: Props) {
+export default function Checkout({ data, path }: Props) {
 
 
   const { allWpMenu: { menus } } = data
   return (
-    <Layout menus={menus[0]}>
+    <Layout menus={menus[0]} isCheckout={path === "/checkout/"}>
       <CheckoutWrapper>
         <CheckoutForm />
       </CheckoutWrapper>

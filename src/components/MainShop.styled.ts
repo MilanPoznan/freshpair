@@ -49,7 +49,7 @@ export const SingleProduct = styled.div`
     color: ${({ theme }) => theme.colors.borderColor};
     text-transform: uppercase;
     font-weight: 500;
-    font-family: 'billionDreams', cursive;
+    font-family: 'Nunito Sans', sans-serif;
     font-weight: bold;
     max-width: 80%;
     margin: 0 auto;

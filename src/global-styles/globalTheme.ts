@@ -17,6 +17,7 @@ export const theme: DefaultTheme = {
     white: '#FFFFFF',
     white65: 'rgba(255,255,255, 0.65)',
     yellow: '#FFFF83',
-    borderColor: '#2e2c2c'
+    borderColor: '#2e2c2c',
+    gold: '#c4a44c'
   }
 }

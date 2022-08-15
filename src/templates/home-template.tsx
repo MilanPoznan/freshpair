@@ -8,19 +8,14 @@ import BestSellers from '../components/BestSellers'
 import { MenuProps } from '../components/Header'
 
 export default function HomePage({ data, location }: any) {
-  // const { wpPage: { translations, language, title, slug, siteContent: { flexibleContent } }, allWp, allWpChef, allWpMenu: { menus } } = data
-
-  console.log(data)
 
   const { allWpMenu: { menus }, wpPage: { homepage: { aboutUs, bestSellers, categoryGroup } } } = data
 
-  console.log('bs', bestSellers)
 
   return (<Layout menus={menus[0]}>
     <HeroSection heroData={categoryGroup} />
     <AboutUs content={aboutUs} />
-    <BestSellers bestSellersArr={bestSellers} />
-    <div>homepage</div>
+    {/* <BestSellers bestSellersArr={bestSellers} /> */}
 
 
   </Layout>)
