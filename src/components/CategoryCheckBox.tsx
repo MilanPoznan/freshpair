@@ -4,12 +4,13 @@ type Props = {
   addActiveCategory: React.Dispatch<React.SetStateAction<[] | string[]>>
   catName: string;
   isParrentSelected: boolean
+  isSelected?: boolean
 }
 import { CategoryCheckBoxStyle } from './MainShop.styled'
 
-export default function CategoryCheckBox({ addActiveCategory, catName, isParrentSelected }: Props) {
+export default function CategoryCheckBox({ addActiveCategory, catName, isParrentSelected, isSelected }: Props) {
 
-  const [isChecked, setisChecked] = useState(false)
+  const [isChecked, setisChecked] = useState(isSelected)
 
   function addOrRemoveCategory() {
     if (!isChecked) {

@@ -160,6 +160,9 @@ export const CategoryCheckBoxStyle = styled.div<{ isParrentSelected: boolean }>`
   width: 20px;
   height: 20px;
   border: 1px solid black;
+  display: flex;
+  align-items: center;
+justify-content: center;
   pointer-events: ${({ isParrentSelected }) => isParrentSelected ? 'none' : 'auto'};
   opacity: ${({ isParrentSelected }) => isParrentSelected ? 0.5 : 1};;
 `

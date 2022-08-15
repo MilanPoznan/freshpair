@@ -106,7 +106,6 @@ export default function MainShop({ shopData, allWpCategory, activeLocationCatego
 
   useEffect(() => {
 
-
     //moze cleanup na kraju :) 
     const parrentCat = allFetchedCategories.reduce((acc: ParrentWithChildCategories, curr: any) => {
       if (curr.ancestors === null && curr.name !== 'Uncategorized') {
@@ -124,22 +123,22 @@ export default function MainShop({ shopData, allWpCategory, activeLocationCatego
     }, parrentCat)
 
     setAllCat(Object.entries(parrentcatWithChild))
+    console.log(activeProducts)
 
-
-  }, [])
+  }, [activeCategory])
 
   useEffect(() => {
-    console.log(activeCategory)
     filterProducts()
+    console.log(activeProducts)
+
   }, [activeCategory])
 
 
 
   function filterProducts() {
 
-    console.log('Filtriram')
     let finalArr: SneakersData[] = []
-    console.log(activeCategory)
+
     if (activeCategory.length == 0) {
       setActiveProducts(allProducts)
     } else {
@@ -167,6 +166,7 @@ export default function MainShop({ shopData, allWpCategory, activeLocationCatego
   return (
     <MainShopWrapper>
       <CategoryFiltersWrapper>
+
         <CategorySelectBox
           isOpen={isPickCategoryOpen}
           onClick={() => setIsPickCategoryOpen(isPickCategoryOpen => !isPickCategoryOpen)}>
@@ -180,15 +180,13 @@ export default function MainShop({ shopData, allWpCategory, activeLocationCatego
               <SingleCategoryWrapper>
                 <ParrentCat>
                   {allCategoiesArr[0]}
-                  <CategoryCheckBox addActiveCategory={setAtiveCategory} catName={allCategoiesArr[0]} isParrentSelected={false} />
+                  <CategoryCheckBox addActiveCategory={setAtiveCategory} catName={allCategoiesArr[0]} isParrentSelected={false} isSelected={activeCategory.includes(allCategoiesArr[0])} />
                 </ParrentCat>
                 {allCategoiesArr[1].map(childItem =>
                   <ChildCat>
                     {childItem}
-                    <CategoryCheckBox addActiveCategory={setAtiveCategory} catName={childItem} isParrentSelected={activeCategory.includes(allCategoiesArr[0])} />
-
+                    <CategoryCheckBox addActiveCategory={setAtiveCategory} catName={childItem} isParrentSelected={activeCategory.includes(allCategoiesArr[0])} isSelected={activeCategory.includes(childItem)} />
                   </ChildCat>)}
-
               </SingleCategoryWrapper>)}
 
           </CategorySelectOptions>
@@ -198,15 +196,17 @@ export default function MainShop({ shopData, allWpCategory, activeLocationCatego
 
 
       <AllProductsBox>
-        {activeProducts && activeProducts.map(item => item &&
-          <SingleProduct key={item.id}>
-            <SingleProductImageWrapper>
-              <GatsbyImage alt="shoes featured" image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
-            </SingleProductImageWrapper>
-            <Link to={item.link}>{item.title}</Link>
-          </SingleProduct>
-
-        )}
+        {activeProducts.length !== 0
+          ? activeProducts.map(item => item &&
+            <SingleProduct key={item.id}>
+              <SingleProductImageWrapper>
+                <GatsbyImage alt="shoes featured" image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
+              </SingleProductImageWrapper>
+              <Link to={item.link}>{item.title}</Link>
+            </SingleProduct>
+          )
+          : <h2 style={{ textAlign: 'center', width: '80%', margin: '40px auto' }}>Currenlty this category doesn't cointain products</h2>
+        }
       </AllProductsBox>
     </MainShopWrapper>
 
