@@ -19,6 +19,7 @@ import {
 type Props = {
   shopData: SneakersData[]
   allWpCategory: any
+  activeLocationCategory: string | undefined
 }
 
 interface SingleSneaker {
@@ -33,7 +34,9 @@ interface ParrentWithChildCategories {
   [key: string]: string[]
 }
 
-export default function MainShop({ shopData, allWpCategory }: Props) {
+export default function MainShop({ shopData, allWpCategory, activeLocationCategory }: Props) {
+
+
 
   const [activeCategory, setAtiveCategory] = useState<string[]>([])
 
@@ -83,12 +86,20 @@ export default function MainShop({ shopData, allWpCategory }: Props) {
 
     return finalShoesShape
   }
-  // const isCheckboxActive = (item: string) =>
 
+  const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
   useEffect(() => {
+
+    let arrWithPassedCategoryFromHomePage: string[] = [];
+    if (activeLocationCategory) {
+      arrWithPassedCategoryFromHomePage.push(capitalizeFirstLetter(activeLocationCategory))
+      setAtiveCategory([...arrWithPassedCategoryFromHomePage])
+    }
+
     setAllProducts(returnProperShape())
     setActiveProducts(returnProperShape())
+
   }, [])
 
 
@@ -99,7 +110,6 @@ export default function MainShop({ shopData, allWpCategory }: Props) {
     //moze cleanup na kraju :) 
     const parrentCat = allFetchedCategories.reduce((acc: ParrentWithChildCategories, curr: any) => {
       if (curr.ancestors === null && curr.name !== 'Uncategorized') {
-        console.log(name)
         acc[curr.name] = []
       }
       return acc
@@ -119,6 +129,7 @@ export default function MainShop({ shopData, allWpCategory }: Props) {
   }, [])
 
   useEffect(() => {
+    console.log(activeCategory)
     filterProducts()
   }, [activeCategory])
 
@@ -126,14 +137,13 @@ export default function MainShop({ shopData, allWpCategory }: Props) {
 
   function filterProducts() {
 
+    console.log('Filtriram')
     let finalArr: SneakersData[] = []
-    console.log(allProducts)
-
+    console.log(activeCategory)
     if (activeCategory.length == 0) {
       setActiveProducts(allProducts)
     } else {
       allProducts.forEach(item => {
-        console.log(item)
         item.mycattegories.map(singleCategory => {
           if (activeCategory.includes(singleCategory)) {
             finalArr.push(item)
@@ -148,7 +158,6 @@ export default function MainShop({ shopData, allWpCategory }: Props) {
       const uniq = [...new Set(finalArr)]
 
       setActiveProducts(uniq)
-      console.log('filtered activeProducts', uniq)
     }
 
   }

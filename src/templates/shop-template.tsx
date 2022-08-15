@@ -38,7 +38,7 @@ export default function Shop({ data, location }: any) {
 
   return (
     <Layout menus={menus[0]}>
-      <MainShop shopData={nodes} allWpCategory={allWpCategory} />
+      <MainShop shopData={nodes} allWpCategory={allWpCategory} activeLocationCategory={location.state?.activeCat} />
     </Layout>
   )
 }

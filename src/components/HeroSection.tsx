@@ -1,8 +1,8 @@
 import React from 'react'
 import { GatsbyImageInterface } from '../globalInterface'
-import { HeroSectionWrapper, SingleImageBox, FirstImageWrapper, OtherImagesWrapper } from './HeroSection.styled'
+import { HeroSectionWrapper, FirstBox, ImgHoverWrapper, SingleImageBox, FirstImageWrapper, OtherImagesWrapper } from './HeroSection.styled'
 import { GatsbyImage } from "gatsby-plugin-image"
-
+import { Link } from 'gatsby'
 
 interface HeroProps {
   heroData: {
@@ -20,7 +20,7 @@ interface HeroProps {
 
 
 export default function HeroSection({ heroData }: HeroProps) {
-  console.log('heroData', heroData)
+
   const {
     categoryImage,
     categoryImage2,
@@ -32,23 +32,34 @@ export default function HeroSection({ heroData }: HeroProps) {
     categoryTitle2,
     categoryTitle3,
   } = heroData
+
+
+
+  const createPathAndCategoryState = (url: string) => url.split('/')
+
+  console.log(createPathAndCategoryState(categoryLink))
   return (
     <HeroSectionWrapper>
-      <FirstImageWrapper href={categoryLink}>
-        <GatsbyImage alt="hero" image={categoryImage.localFile.childImageSharp.gatsbyImageData} />
-        <h2>{categoryTitle1}</h2>
-      </FirstImageWrapper>
+
+      <FirstBox>
+        <FirstImageWrapper>
+          <GatsbyImage alt="hero" image={categoryImage.localFile.childImageSharp.gatsbyImageData} />
+          <Link state={{ activeCat: createPathAndCategoryState(categoryLink)[1] }} to={`/${createPathAndCategoryState(categoryLink)[0]}`}>{categoryTitle1}</Link>
+        </FirstImageWrapper>
+      </FirstBox>
 
       <OtherImagesWrapper>
+
         <SingleImageBox>
           <GatsbyImage alt="hero" image={categoryImage2.localFile.childImageSharp.gatsbyImageData} />
-          <h2>{categoryTitle2}</h2>
+          <Link state={{ activeCat: createPathAndCategoryState(categoryLink2)[1] }} to={`/${createPathAndCategoryState(categoryLink2)[0]}`} > {categoryTitle2}</Link>
         </SingleImageBox>
 
         <SingleImageBox>
           <GatsbyImage alt="hero" image={categoryImage3.localFile.childImageSharp.gatsbyImageData} />
-          <h2>{categoryTitle3}</h2>
+          <Link state={{ activeCat: createPathAndCategoryState(categoryLink3)[1] }} to={`/${createPathAndCategoryState(categoryLink3)[0]}`}>{categoryTitle3}</Link>
         </SingleImageBox>
+
       </OtherImagesWrapper>
 
     </HeroSectionWrapper>

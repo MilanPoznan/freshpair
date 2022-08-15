@@ -33,9 +33,10 @@ type Props = {
   id: number
   size: string
   isEnabled: boolean
+  isAlreadyInCart: boolean
 }
 
-export default function AddToCartCTA({ name, id, size, isEnabled }: Props) {
+export default function AddToCartCTA({ name, id, size, isEnabled, isAlreadyInCart }: Props) {
 
   const storeSessionStorage = sessionStorage.getItem("store")
   const getItemsArr = storeSessionStorage && JSON.parse(storeSessionStorage)
@@ -88,7 +89,10 @@ export default function AddToCartCTA({ name, id, size, isEnabled }: Props) {
 
   return (
 
-    <CtaButton isEnabled={isEnabled} onClick={addToSessionStorage}>{isItemInCart ? "Item in Cart" : "Add To Cart"}</CtaButton>
+    <CtaButton
+      isEnabled={isEnabled}
+      onClick={addToSessionStorage}>
+      {isItemInCart || isAlreadyInCart ? "Item in Cart" : "Add To Cart"}</CtaButton>
 
   )
 }

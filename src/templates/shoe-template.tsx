@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 
@@ -17,17 +17,32 @@ type Props = {
 
 export default function Shoe({ data }: Props) {
 
+  const storeSessionStorage = sessionStorage.getItem("store")
+  const getItemsArr = storeSessionStorage && JSON.parse(storeSessionStorage)
+
   const { allWpMenu: { menus }, wpSneaker: { singleSneaker: galery, title, id, content, featuredImage } } = data
 
   const hasGallery = galery.galery !== null;
 
   const [size, setSize] = useState('')
+  const [isAlreadyInCart, setIsAlreadyInCart] = useState(false)
+
+  useEffect(() => {
+    getItemsArr && getItemsArr.forEach((element: any) => {
+      if (element.id === id) {
+        setIsAlreadyInCart(true)
+        setSize(element.size)
+      }
+
+    });
+  }, [])
 
   return (
-    <Layout menus={menus[0]}>
 
+    <Layout menus={menus[0]}>
       {galery && hasGallery && <SneakerSlider data={galery}></SneakerSlider>}
       {!hasGallery && <HeroImage featuredImage={featuredImage.node.localFile.childImageSharp.gatsbyImageData} />}
+
       <SingleShoeLayout>
         <ContentShoeWrapp>
           <Heading1>{title}</Heading1>
@@ -40,7 +55,7 @@ export default function Shoe({ data }: Props) {
                 {item}
               </SingleSize>)}
           </SizesComponentWrapper>
-          <AddToCartCTA name={title} id={id} size={size} isEnabled={size.length !== 0} />
+          <AddToCartCTA isAlreadyInCart={isAlreadyInCart} name={title} id={id} size={size} isEnabled={size.length !== 0} />
         </SizeAndCtaWrapp>
       </SingleShoeLayout>
     </Layout>
