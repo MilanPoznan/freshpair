@@ -4,15 +4,14 @@ import { device } from '../global-styles/mediaQueries'
 
 export const FooterSection = styled.section`
   position: relative;
-  padding: 40px 0;
   width: 100%;
   display: flex;
-  flex-flow: column;
-  /* justify-content: ; */
+  flex-flow: row;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.black};
   z-index: 100;
-  /* color: white; */
+  color: white;
+  padding: 0 24px;
   img {
     margin-top: 30px;
     width: 30px;
@@ -21,6 +20,12 @@ export const FooterSection = styled.section`
     text-decoration: none;
     font-family: 'Nunito Sans', sans-serif;
     color: ${({ theme }) => theme.colors.black};
+    color: white;
+
+  }
+  svg {
+    width: 30px;
+    border-radius: 50%;
   }
   &:before {
     content: '';

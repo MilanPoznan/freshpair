@@ -7,9 +7,7 @@
  */
 
 
-a:hover {
-  color: #c4a44c;
-}
+
 
 :root {
   --light: 'Roboto', sans-serif;
@@ -42,6 +40,7 @@ html {
   /* 1 */
   -webkit-text-size-adjust: 100%;
   /* 2 */
+  scroll-behavior: smooth
 }
 
 /* Sections
@@ -52,6 +51,7 @@ html {
 
 body {
   margin: 0;
+  scroll-behavior: smooth
 }
 
 /**

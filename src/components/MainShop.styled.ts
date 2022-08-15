@@ -18,11 +18,12 @@ position: relative;
 `
 
 export const AllProductsBox = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 0 24px;
+  min-height: 80vh;
 
   @media ${device.desktopS} {
     width: calc(100% - 280px);
