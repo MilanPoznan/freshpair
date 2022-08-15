@@ -1,29 +1,24 @@
 import { device } from './mediaQueries';
 import styled from "styled-components";
 
-export const Heading1 = styled.h1<{ hasMarginBottom?: boolean, hasDifferentFontSize?: boolean }>`
+export const Heading1 = styled.h1`
   margin: 0;
-  margin-bottom: ${({ hasMarginBottom }) => hasMarginBottom ? '58px' : '0px'};
+  margin-bottom:0px;
   font-family: 'Nunito Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: ${({ hasDifferentFontSize }) => hasDifferentFontSize ? '9.4vw' : '46px'};
+  font-size: 46px;
   line-height: 54px;
   color: ${({ theme }) => theme.colors.black};
   text-transform: uppercase;
 
   @media ${device.tablet} {
-    margin-bottom: ${({ hasMarginBottom }) => hasMarginBottom ? '78px' : '0px'};
     line-height: 76px;
   }
   @media ${device.tabletL} {
     font-size: 72px;
   }
-  @media ${device.desktopS} {
-    margin-bottom: ${({ hasMarginBottom }) => hasMarginBottom ? '58px' : '0px'};
-  }
   @media ${device.desktopL} {
-    margin-bottom: ${({ hasMarginBottom }) => hasMarginBottom ? '70px' : '0px'};
     font-size: 92px;
     line-height: 94px;
   }
