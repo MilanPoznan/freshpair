@@ -4,6 +4,7 @@ import HeroSection from '../components/HeroSection'
 import Layout from '../components/Layout'
 import AboutUs from '../components/AboutUs'
 import BestSellers from '../components/BestSellers'
+import LatestBlogSection from '../components/LatestBlogSection'
 
 import { MenuProps } from '../components/Header'
 
@@ -16,7 +17,7 @@ export default function HomePage({ data, location }: any) {
     <HeroSection heroData={categoryGroup} />
     <AboutUs content={aboutUs} />
     {/* <BestSellers bestSellersArr={bestSellers} /> */}
-
+    <LatestBlogSection />
 
   </Layout>)
 }
