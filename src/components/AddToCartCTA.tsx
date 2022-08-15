@@ -38,7 +38,7 @@ type Props = {
 
 export default function AddToCartCTA({ name, id, size, isEnabled, isAlreadyInCart }: Props) {
 
-  const storeSessionStorage = sessionStorage.getItem("store")
+  const storeSessionStorage = typeof window !== 'undefined' && sessionStorage.getItem("store")
   const getItemsArr = storeSessionStorage && JSON.parse(storeSessionStorage)
 
   const [isItemInCart, setIsItemInCart] = useState(false)

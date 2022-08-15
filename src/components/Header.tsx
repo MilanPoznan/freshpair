@@ -67,7 +67,7 @@ export default function Header({ menuItems }: any) {
   // CART ITEM SECTIONS
   const [activeItems, setActiveItems] = useState([])
 
-  const storeSessionStorage = sessionStorage.getItem("store")
+  const storeSessionStorage = typeof window !== 'undefined' && sessionStorage.getItem("store")
   let storeSessionStorageArr = storeSessionStorage && JSON.parse(storeSessionStorage)
 
   const removeFromSessionStorage = (name: string) => {

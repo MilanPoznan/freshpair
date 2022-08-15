@@ -17,7 +17,7 @@ type Props = {
 
 export default function Shoe({ data }: Props) {
 
-  const storeSessionStorage = sessionStorage.getItem("store")
+  const storeSessionStorage = typeof window !== 'undefined' && sessionStorage.getItem("store")
   const getItemsArr = storeSessionStorage && JSON.parse(storeSessionStorage)
 
   const { allWpMenu: { menus }, wpSneaker: { singleSneaker: galery, title, id, content, featuredImage } } = data

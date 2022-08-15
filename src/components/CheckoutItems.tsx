@@ -8,7 +8,7 @@ import { UppercaseLabel } from '../global-styles/globalComponents'
 
 export default function CheckoutItems({ }: Props) {
 
-  const storeSessionStorage = sessionStorage.getItem("store")
+  const storeSessionStorage = typeof window !== 'undefined' && sessionStorage.getItem("store")
 
   let storeSessionStorageArr = storeSessionStorage && JSON.parse(storeSessionStorage)
 
