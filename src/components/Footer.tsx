@@ -12,8 +12,10 @@ export default function Footer({ }: Props) {
       <FooterSection>
         <Logo />
         <PhoneNumber href="tel:+381123123">+381123123</PhoneNumber>
-        <EmailParagraph href='mailto:freshpauir@gmail.com'>freshpauir@gmail.com</EmailParagraph>
-        <img src={instaUrl} />
+        <EmailParagraph href="mailto:freshpauir@gmail.com">freshpauir@gmail.com</EmailParagraph>
+        <a href="https://www.instagram.com/freshpair_store/?hl=en" target="__blank">
+          <img src={instaUrl} />
+        </a>
       </FooterSection>
 
     </ContentWrapper>

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import { device } from '../global-styles/mediaQueries'
+
 export const FooterSection = styled.section`
   position: relative;
   padding: 40px 0;
@@ -8,7 +10,8 @@ export const FooterSection = styled.section`
   flex-flow: column;
   /* justify-content: ; */
   align-items: center;
-  /* background-color: ${({ theme }) => theme.colors.black}; */
+  background-color: ${({ theme }) => theme.colors.white};
+  z-index: 100;
   /* color: white; */
   img {
     margin-top: 30px;
@@ -27,6 +30,11 @@ export const FooterSection = styled.section`
     height: 1px;
     background-color: ${({ theme }) => theme.colors.gray};
     top: 0px;
+  }
+  @media ${device.desktopS} {
+  &:before {
+    display: none;
+  }
   }
 `
 
