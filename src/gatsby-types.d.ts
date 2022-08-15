@@ -4101,6 +4101,7 @@ type WpCategoryFieldsEnum =
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
   | 'posts.nodes.singleBlog.fieldGroupName'
+  | 'posts.nodes.singleBlog.previewText'
   | 'posts.nodes.slug'
   | 'posts.nodes.status'
   | 'posts.nodes.tags.nodes'
@@ -10120,6 +10121,7 @@ type WpPostFieldsEnum =
   | 'singleBlog.heroImage.uri'
   | 'singleBlog.heroImage.width'
   | 'singleBlog.heroImage.wpChildren.nodes'
+  | 'singleBlog.previewText'
   | 'slug'
   | 'status'
   | 'tags.nodes'
@@ -10493,6 +10495,7 @@ type WpPostFormatFieldsEnum =
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
   | 'posts.nodes.singleBlog.fieldGroupName'
+  | 'posts.nodes.singleBlog.previewText'
   | 'posts.nodes.slug'
   | 'posts.nodes.status'
   | 'posts.nodes.tags.nodes'
@@ -10827,11 +10830,13 @@ type WpPost_Singleblog = WpAcfFieldGroup & {
   /** The name of the ACF Field Group */
   readonly fieldGroupName: Maybe<Scalars['String']>;
   readonly heroImage: Maybe<WpMediaItem>;
+  readonly previewText: Maybe<Scalars['String']>;
 };
 
 type WpPost_SingleblogFilterInput = {
   readonly fieldGroupName: InputMaybe<StringQueryOperatorInput>;
   readonly heroImage: InputMaybe<WpMediaItemFilterInput>;
+  readonly previewText: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** The reading setting type */
@@ -11961,6 +11966,7 @@ type WpTagFieldsEnum =
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
   | 'posts.nodes.singleBlog.fieldGroupName'
+  | 'posts.nodes.singleBlog.previewText'
   | 'posts.nodes.slug'
   | 'posts.nodes.status'
   | 'posts.nodes.tags.nodes'
@@ -13125,6 +13131,7 @@ type WpUserFieldsEnum =
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
   | 'posts.nodes.singleBlog.fieldGroupName'
+  | 'posts.nodes.singleBlog.previewText'
   | 'posts.nodes.slug'
   | 'posts.nodes.status'
   | 'posts.nodes.tags.nodes'

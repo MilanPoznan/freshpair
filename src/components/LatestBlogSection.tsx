@@ -39,7 +39,13 @@ a {
     position: relative;
     display: flex;
     padding: 10px;
+  }
+  p {
+    padding-left: 10px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.blackOpacity40};
+    font-size: 14px;
+    color: ${({ theme }) => theme.colors.black60};
+    padding-bottom: 10px;
   }
 
   @media ${device.desktopS} {
@@ -55,6 +61,9 @@ export default function LatestBlogSection({ }: Props) {
 			title
       slug
       uri
+      singleBlog {
+        previewText
+      }
       featuredImage {
         node {
           localFile {
@@ -84,7 +93,7 @@ export default function LatestBlogSection({ }: Props) {
         {latest3Post.map((item: any) => <SinglePost>
           <GatsbyImage alt="post image" image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
           <Link to={item.slug}>{item.title}</Link>
-
+          <p>{item.singleBlog.previewText}...</p>
         </SinglePost>)}
 
       </BlogWrapper>
