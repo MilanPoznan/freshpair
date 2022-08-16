@@ -13525,6 +13525,11 @@ type WpWritingSettingsFilterInput = {
   readonly useSmilies: InputMaybe<BooleanQueryOperatorInput>;
 };
 
+type archivePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type archivePageQuery = { readonly allWpMenu: { readonly menus: ReadonlyArray<{ readonly locations: ReadonlyArray<WpMenuLocationEnum | null> | null, readonly name: string | null, readonly slug: string | null, readonly menuItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly order: number | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly databaseId: number, readonly cssClasses: ReadonlyArray<string | null> | null, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null } | null> | null } | null } | null> | null } | null } | null> | null } | null }> }, readonly allWpPost: { readonly nodes: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly content: string | null, readonly singleBlog: { readonly previewText: string | null } | null, readonly featuredImage: { readonly node: { readonly localFile: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null }> } };
+
 type checkoutPageQueryVariables = Exact<{
   id: InputMaybe<Scalars['String']>;
 }>;
@@ -13538,6 +13543,13 @@ type contentPageByIDQueryVariables = Exact<{
 
 
 type contentPageByIDQuery = { readonly allWpMenu: { readonly menus: ReadonlyArray<{ readonly locations: ReadonlyArray<WpMenuLocationEnum | null> | null, readonly name: string | null, readonly slug: string | null, readonly menuItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly order: number | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly databaseId: number, readonly cssClasses: ReadonlyArray<string | null> | null, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null } | null> | null } | null } | null> | null } | null } | null> | null } | null }> }, readonly wpPage: { readonly title: string | null, readonly slug: string | null, readonly uri: string | null, readonly content: string | null } | null };
+
+type contentPostByIDQueryVariables = Exact<{
+  id: InputMaybe<Scalars['String']>;
+}>;
+
+
+type contentPostByIDQuery = { readonly allWpMenu: { readonly menus: ReadonlyArray<{ readonly locations: ReadonlyArray<WpMenuLocationEnum | null> | null, readonly name: string | null, readonly slug: string | null, readonly menuItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly order: number | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly databaseId: number, readonly cssClasses: ReadonlyArray<string | null> | null, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null } | null> | null } | null } | null> | null } | null } | null> | null } | null }> }, readonly wpPost: { readonly title: string | null, readonly slug: string | null, readonly uri: string | null, readonly content: string | null, readonly featuredImage: { readonly node: { readonly localFile: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null } | null };
 
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
@@ -13592,6 +13604,11 @@ type WpPagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type WpPagesQuery = { readonly allWpPage: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly slug: string | null, readonly uri: string | null }> } };
+
+type WpPostsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type WpPostsQuery = { readonly allWpPost: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly slug: string | null, readonly uri: string | null, readonly content: string | null, readonly singleBlog: { readonly previewText: string | null } | null, readonly featuredImage: { readonly node: { readonly localFile: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null }> } };
 
 type WpShoesQueryVariables = Exact<{ [key: string]: never; }>;
 

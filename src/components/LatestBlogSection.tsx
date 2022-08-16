@@ -9,6 +9,7 @@ export const BlogWrapper = styled.div`
 
   @media ${device.desktopS} {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-bottom: 100px;
   }
@@ -20,6 +21,7 @@ export const SectionTitle = styled.h2`
   justify-content: center;
   margin: 30px 0;
 `
+
 export const SinglePost = styled.div`
 margin-bottom: 30px;
 .gatsby-image-wrapper {
@@ -27,7 +29,6 @@ margin-bottom: 30px;
   img {
     border-radius: 10px;
   }
- 
 }
 a {
     font-size: 24px;
@@ -39,6 +40,10 @@ a {
     position: relative;
     display: flex;
     padding: 10px;
+    transition: 0.3s;
+    &:hover {
+      color: ${({ theme }) => theme.colors.gold};
+    }
   }
   p {
     padding-left: 10px;
@@ -84,15 +89,15 @@ export default function LatestBlogSection({ }: Props) {
   const { allWpPost: { nodes } } = allPosts
 
   const latest3Post = nodes.slice(-3)
-  console.log(allPosts)
+
   return (
     <ContentWrapper>
-      <SectionTitle>Blog</SectionTitle>
+      <SectionTitle>Latest Blog Posts</SectionTitle>
       <BlogWrapper>
 
         {latest3Post.map((item: any) => <SinglePost>
           <GatsbyImage alt="post image" image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
-          <Link to={item.slug}>{item.title}</Link>
+          <Link to={'news/' + item.slug}>{item.title}</Link>
           <p>{item.singleBlog.previewText}...</p>
         </SinglePost>)}
 

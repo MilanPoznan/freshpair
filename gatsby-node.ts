@@ -21,8 +21,22 @@ function resolvePathForTemplate(page: string) {
 }
 
 exports.createPages = async ({ graphql, actions, reporter }: any) => {
+
   const allPages = await getPages(graphql, reporter);
   const allShoes = await getShoes(graphql, reporter)
+  const allPosts = await getAllPosts(graphql, reporter)
+
+
+  console.log('allPosts', allPosts)
+
+  allPosts.nodes.forEach((post: any) => actions.createPage({
+    path: `/news${post.uri}`,
+    component: path.resolve('./src/templates/single-post-template.tsx'),
+    context: {
+      id: post.id,
+      slug: post.slug
+    }
+  }));
 
 
   allPages.nodes.forEach((page: any) => actions.createPage({
@@ -33,7 +47,6 @@ exports.createPages = async ({ graphql, actions, reporter }: any) => {
       slug: page.slug
     }
   }))
-
 
 
   allShoes.nodes.forEach((page: any) => actions.createPage({
@@ -72,6 +85,48 @@ async function getPages(graphql: any, reporter: any) {
 
 }
 
+async function getAllPosts(graphql: any, reporter: any) {
+  const postsResult = await graphql(`
+  query WpPosts {
+    allWpPost {
+      nodes {
+        id
+        title
+        slug
+        uri
+        content
+        singleBlog {
+          previewText
+        }
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  layout: FULL_WIDTH
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
+        }
+      }
+      }
+    }
+  }
+  `)
+
+
+  if (postsResult.errors) {
+    reporter.panicOnBuild(
+      'There was an error loading your Single Page',
+      postsResult.errors
+    )
+    return
+  }
+  return postsResult.data.allWpPost
+
+}
 
 async function getShoes(graphql: any, reporter: any) {
 
