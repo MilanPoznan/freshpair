@@ -12,10 +12,12 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [{
     resolve: 'gatsby-source-wordpress',
+
     options: {
       "url": `${process.env.GATSBY_WP_URL}graphql`
     }
-  }, "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-react-helmet", "gatsby-plugin-sharp", "gatsby-transformer-sharp"]
+  },
+    "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-react-helmet", "gatsby-plugin-sharp", "gatsby-transformer-sharp"]
 
 };
 

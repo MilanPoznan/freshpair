@@ -4,6 +4,7 @@ import Logo from './Logo'
 //@ts-ignore
 import instaUrl from '../images/instagram-iconf.png';
 import { ContentWrapper } from '../global-styles/globalComponents';
+
 type Props = {}
 
 export default function Footer({ }: Props) {
@@ -11,6 +12,7 @@ export default function Footer({ }: Props) {
     // <ContentWrapper>
     <FooterSection>
       <div>
+
         <PhoneNumber href="tel:+381123123">+381123123</PhoneNumber>
       </div>
       <div>

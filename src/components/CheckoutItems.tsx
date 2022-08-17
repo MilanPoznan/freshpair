@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { CheckoutItemsWrapper, SingleCheckoutItem, RemoveIcon, ContentItemWrapp } from './CheckoutForm.styled'
-type Props = {}
+type Props = {
+  submited: boolean | null
+}
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { UppercaseLabel } from '../global-styles/globalComponents'
 
 
-export default function CheckoutItems({ }: Props) {
+export default function CheckoutItems({ submited }: Props) {
+
+
+
+
 
   const storeSessionStorage = typeof window !== 'undefined' && sessionStorage.getItem("store")
 
@@ -61,9 +67,6 @@ export default function CheckoutItems({ }: Props) {
   useEffect(() => {
 
     let arr: any[] = [];
-    console.log(storeSessionStorageArr)
-
-
 
     storeSessionStorageArr && storeSessionStorageArr.forEach((storeItem: any) => {
       allSneakerData.allWpSneaker.nodes.map((sneaker: any) => {
@@ -74,13 +77,11 @@ export default function CheckoutItems({ }: Props) {
     })
     setOrders(arr)
 
-    console.log('arr', arr)
-
-
-
-
-
   }, [])
+
+  useEffect(() => {
+    submited && setOrders([])
+  }, [submited])
 
 
   return (

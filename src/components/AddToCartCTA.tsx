@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
 
 export const CtaButton = styled.div<{ isEnabled: boolean }>`
@@ -41,6 +41,9 @@ export default function AddToCartCTA({ name, id, size, isEnabled, isAlreadyInCar
   const storeSessionStorage = typeof window !== 'undefined' && sessionStorage.getItem("store")
   const getItemsArr = storeSessionStorage && JSON.parse(storeSessionStorage)
 
+  const sizeRef = useRef(size)
+
+  console.log('sizeRef', sizeRef)
   const [isItemInCart, setIsItemInCart] = useState(false)
   const item = {
     name,
@@ -64,7 +67,7 @@ export default function AddToCartCTA({ name, id, size, isEnabled, isAlreadyInCar
     } else {
       // let getItemsArr = JSON.parse(storeSessionStorage)
       Object.values(getItemsArr).map((singleItem: any) => {
-        if (singleItem.name === name) {
+        if (singleItem.name === name && singleItem.size === size) {
           alert('Product alrready exist')
           return
         } else {
