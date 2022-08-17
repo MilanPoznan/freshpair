@@ -6,12 +6,12 @@ export const FooterSection = styled.section`
   position: relative;
   width: 100%;
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.black};
   z-index: 100;
   color: white;
-  padding: 0 24px;
+  padding: 48px 24px;
   img {
     margin-top: 30px;
     width: 30px;
@@ -27,7 +27,7 @@ export const FooterSection = styled.section`
     width: 30px;
     border-radius: 50%;
   }
-  &:before {
+  /* &:before {
     content: '';
     position: absolute;
     left: 5%;
@@ -35,10 +35,22 @@ export const FooterSection = styled.section`
     height: 1px;
     background-color: ${({ theme }) => theme.colors.gray};
     top: 0px;
+  } */
+  @media ${device.tablet} {
+    flex-flow: row-reverse;
+    padding: 26px 24px;
+    justify-content: space-between;
+    align-items: center;
+    img {
+    margin-top: 0px;
+    width: 30px;
+    } 
   }
   @media ${device.desktopS} {
   &:before {
     display: none;
+    padding: 26px 80px;
+
   }
   }
 `
@@ -51,3 +63,37 @@ export const EmailParagraph = styled.a`
 
 `
 
+
+export const ContactLinkWrapper = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  svg {
+    margin-bottom: 12px;
+  }
+
+  a {
+    margin: 0 auto 40px;
+    &:hover {
+      color: ${({ theme }) => theme.colors.gold};
+    }
+  }
+  @media ${device.tablet} {
+    flex-flow: row;
+    a {
+      margin: 0 30px 0 10px;
+    } 
+    svg {
+    margin-bottom: 0px;
+  }
+
+    
+  }
+`
+
+export const LinksWrapp = styled.div`
+  @media ${device.tablet} {
+    display: flex;
+  }
+`

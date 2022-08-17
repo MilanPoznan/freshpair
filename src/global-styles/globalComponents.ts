@@ -152,7 +152,7 @@ export const SmallP = styled.p`
   font-weight: 300;
   font-size: 14px;
   line-height: 24px;
-  color: ${({ theme }) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.white};
 `
 export const SmallLink = styled.a`
   width: fit-content;

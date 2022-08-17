@@ -170,20 +170,19 @@ export default function CheckoutForm({ }: Props) {
             <CheckoutItems submited={submited} />
             <CtaButton isEnabled={true}
               onClick={(e) => onSubmit(e)}>Send Email</CtaButton>
-
           </div>
         </Form>
 
-      </CheckoutFormWrapper>
-      {submited === true && <FormAlert>
-        Form send sucessfully
-        <img src={checkkmartPath} />
-      </FormAlert>}
-      {submited === false && <FormAlert>
-        Error occured, please try again
-        <img src={errorIconPath} />
+        {submited === true && <FormAlert>
+          Form send sucessfully
+          <img src={checkkmartPath} />
+        </FormAlert>}
+        {submited === false && <FormAlert>
+          Error occured, please try again
+          <img src={errorIconPath} />
 
-      </FormAlert>}
+        </FormAlert>}
+      </CheckoutFormWrapper>
     </>
   )
 }

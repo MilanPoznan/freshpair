@@ -1,8 +1,11 @@
 import styled from 'styled-components'
 import { device } from '../global-styles/mediaQueries'
+
 export const CheckoutFormWrapper = styled.div`
-  min-height: 70vh;
-  padding-top: 40px;
+    min-height: 70vh;
+    padding-top: 40px;
+  @media ${device.desktopS} {
+  }
 `
 
 
@@ -92,7 +95,7 @@ export const FormAlert = styled.div`
   max-width: 300px;
   border-radius: 12px;
   box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.53);
-  padding: 40px 20px;
+  padding: 20px 20px;
   img {
     width: 20px;
     height: 20px;
