@@ -4145,6 +4145,7 @@ type WpCategoryFieldsEnum =
   | 'sneaker.nodes.parent.id'
   | 'sneaker.nodes.singleSneaker.fieldGroupName'
   | 'sneaker.nodes.singleSneaker.galery'
+  | 'sneaker.nodes.singleSneaker.shoeCode'
   | 'sneaker.nodes.slug'
   | 'sneaker.nodes.status'
   | 'sneaker.nodes.tags.nodes'
@@ -11496,6 +11497,7 @@ type WpSneakerFieldsEnum =
   | 'singleSneaker.galery.image.title'
   | 'singleSneaker.galery.image.uri'
   | 'singleSneaker.galery.image.width'
+  | 'singleSneaker.shoeCode'
   | 'slug'
   | 'status'
   | 'tags.nodes'
@@ -11681,11 +11683,13 @@ type WpSneaker_Singlesneaker = WpAcfFieldGroup & {
   /** The name of the ACF Field Group */
   readonly fieldGroupName: Maybe<Scalars['String']>;
   readonly galery: Maybe<ReadonlyArray<Maybe<WpSneaker_Singlesneaker_galery>>>;
+  readonly shoeCode: Maybe<Scalars['String']>;
 };
 
 type WpSneaker_SinglesneakerFilterInput = {
   readonly fieldGroupName: InputMaybe<StringQueryOperatorInput>;
   readonly galery: InputMaybe<WpSneaker_Singlesneaker_galeryFilterListInput>;
+  readonly shoeCode: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Field Group */
@@ -12010,6 +12014,7 @@ type WpTagFieldsEnum =
   | 'sneaker.nodes.parent.id'
   | 'sneaker.nodes.singleSneaker.fieldGroupName'
   | 'sneaker.nodes.singleSneaker.galery'
+  | 'sneaker.nodes.singleSneaker.shoeCode'
   | 'sneaker.nodes.slug'
   | 'sneaker.nodes.status'
   | 'sneaker.nodes.tags.nodes'
@@ -13591,7 +13596,7 @@ type shoePageQueryVariables = Exact<{
 }>;
 
 
-type shoePageQuery = { readonly allWpMenu: { readonly menus: ReadonlyArray<{ readonly locations: ReadonlyArray<WpMenuLocationEnum | null> | null, readonly name: string | null, readonly slug: string | null, readonly menuItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly order: number | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly databaseId: number, readonly cssClasses: ReadonlyArray<string | null> | null, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null } | null> | null } | null } | null> | null } | null } | null> | null } | null }> }, readonly wpSneaker: { readonly id: string, readonly link: string | null, readonly slug: string | null, readonly title: string | null, readonly uri: string | null, readonly content: string | null, readonly featuredImage: { readonly node: { readonly localFile: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null, readonly singleSneaker: { readonly galery: ReadonlyArray<{ readonly image: { readonly altText: string | null, readonly localFile: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null> | null } | null } | null };
+type shoePageQuery = { readonly allWpMenu: { readonly menus: ReadonlyArray<{ readonly locations: ReadonlyArray<WpMenuLocationEnum | null> | null, readonly name: string | null, readonly slug: string | null, readonly menuItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly cssClasses: ReadonlyArray<string | null> | null, readonly databaseId: number, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null, readonly order: number | null, readonly childItems: { readonly nodes: ReadonlyArray<{ readonly databaseId: number, readonly cssClasses: ReadonlyArray<string | null> | null, readonly label: string | null, readonly parentDatabaseId: number | null, readonly parentId: string | null, readonly path: string | null } | null> | null } | null } | null> | null } | null } | null> | null } | null }> }, readonly wpSneaker: { readonly id: string, readonly link: string | null, readonly slug: string | null, readonly title: string | null, readonly uri: string | null, readonly content: string | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly ancestors: { readonly nodes: ReadonlyArray<{ readonly name: string | null } | null> | null } | null } | null> | null } | null, readonly featuredImage: { readonly node: { readonly localFile: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null, readonly singleSneaker: { readonly shoeCode: string | null, readonly galery: ReadonlyArray<{ readonly image: { readonly altText: string | null, readonly localFile: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null> | null } | null } | null };
 
 type shopPageQueryVariables = Exact<{
   id: InputMaybe<Scalars['String']>;

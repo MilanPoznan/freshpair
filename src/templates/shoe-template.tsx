@@ -6,9 +6,12 @@ import Layout from '../components/Layout'
 import SneakerSlider from '../components/SneakerSlider'
 import AddToCartCTA from '../components/AddToCartCTA'
 import HeroImage from '../components/HeroImage'
-import { SizesComponentWrapper, SizeAndCtaWrapp, SingleSize, yeezy, ContentShoeWrapp, SingleShoeLayout } from '../components/SizesComponent.styled'
+import {
+  SizesComponentWrapper, SizeAndCtaWrapp, SingleSize,
+  nikeSizes, yeezy, addidasSizes, newBalanceSizes, ContentShoeWrapp, SingleShoeLayout
+} from '../components/SizesComponent.styled'
 
-import { WYSIWYGWrapper, Heading1 } from '../global-styles/globalComponents'
+import { WYSIWYGWrapper, Heading1, UppercaseLabel } from '../global-styles/globalComponents'
 
 
 type Props = {
@@ -20,12 +23,28 @@ export default function Shoe({ data }: Props) {
   const storeSessionStorage = typeof window !== 'undefined' && sessionStorage.getItem("store")
   const getItemsArr = storeSessionStorage && JSON.parse(storeSessionStorage)
 
-  const { allWpMenu: { menus }, wpSneaker: { singleSneaker: galery, title, id, content, featuredImage } } = data
+  const { allWpMenu: { menus }, wpSneaker: { singleSneaker: galery, title, id, content, featuredImage, categories } } = data
 
   const hasGallery = galery.galery !== null;
 
+
   const [size, setSize] = useState('')
   const [isAlreadyInCart, setIsAlreadyInCart] = useState(false)
+  const [currSizes, setCurrSizes] = useState([])
+
+
+  function choseSizes() {
+    const categoryArr: string[] = categories.nodes.map((item: any) => item.name)
+    console.log(categoryArr)
+    if (categoryArr.includes('Airmax') || categoryArr.includes('Nike') || categoryArr.includes("Jordan")) {
+      return setCurrSizes(nikeSizes)
+    } else if (categoryArr.includes('New Ballance')) {
+      return setCurrSizes(newBalanceSizes)
+    } else {
+      return setCurrSizes(addidasSizes)
+    }
+
+  }
 
   useEffect(() => {
     getItemsArr && getItemsArr.forEach((element: any) => {
@@ -35,6 +54,9 @@ export default function Shoe({ data }: Props) {
       }
 
     });
+
+    choseSizes()
+
   }, [])
 
   return (
@@ -46,11 +68,12 @@ export default function Shoe({ data }: Props) {
       <SingleShoeLayout>
         <ContentShoeWrapp>
           <Heading1>{title}</Heading1>
+          <UppercaseLabel>{galery.shoeCode}</UppercaseLabel>
           <WYSIWYGWrapper dangerouslySetInnerHTML={{ __html: content }}></WYSIWYGWrapper>
         </ContentShoeWrapp>
         <SizeAndCtaWrapp>
           <SizesComponentWrapper>
-            {yeezy.map((item: string) =>
+            {currSizes.map((item: string) =>
               <SingleSize key={item} isActive={size === item} onClick={() => setSize(item)}>
                 {item}
               </SingleSize>)}
@@ -76,6 +99,16 @@ export const singleShoeQuery = graphql`
       title
       uri
       content
+      categories {
+      nodes {
+        ancestors {
+          nodes {
+            name
+          }
+        }
+        name
+      }
+    }
       featuredImage {
         node {
           localFile {
@@ -91,6 +124,7 @@ export const singleShoeQuery = graphql`
       }
 
       singleSneaker {  
+        shoeCode
         galery {
           image {
             altText
