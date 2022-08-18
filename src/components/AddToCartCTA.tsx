@@ -60,21 +60,28 @@ export default function AddToCartCTA({ name, id, size, isEnabled, isAlreadyInCar
 
   function addToSessionStorage() {
 
+    console.log(storeSessionStorage)
     if (storeSessionStorage === null || storeSessionStorage.length === 0) {
+
       const storeArr = []
       storeArr.push(item)
       sessionStorage.setItem('store', JSON.stringify(storeArr))
+
     } else {
-      // let getItemsArr = JSON.parse(storeSessionStorage)
-      Object.values(getItemsArr).map((singleItem: any) => {
+
+      const doesContainItem = Object.values(getItemsArr).map((singleItem: any) => {
         if (singleItem.name === name && singleItem.size === size) {
           alert('Product alrready exist')
-          return
+          return false
         } else {
-          getItemsArr.push(item)
-          sessionStorage.setItem('store', JSON.stringify(getItemsArr))
+          return true
         }
       })
+
+      if (!doesContainItem.includes(false)) {
+        getItemsArr.push(item)
+        sessionStorage.setItem('store', JSON.stringify(getItemsArr))
+      }
     }
     setIsItemInCart(checkIsItemInStorage())
     window.location.reload();
