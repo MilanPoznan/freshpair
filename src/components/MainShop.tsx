@@ -158,7 +158,7 @@ export default function MainShop({ shopData, allWpCategory, activeLocationCatego
 
       setActiveProducts(uniq)
     }
-
+    console.log(activeProducts)
   }
 
 
@@ -202,13 +202,13 @@ export default function MainShop({ shopData, allWpCategory, activeLocationCatego
               <SingleProductImageWrapper>
                 <GatsbyImage alt="shoes featured" image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
               </SingleProductImageWrapper>
-              <Link to={item.link}>{item.title}</Link>
+              <Link to={'/sneaker/' + item.slug}>{item.title}</Link>
             </SingleProduct>
           )
           : <h2 style={{ textAlign: 'center', width: '80%', margin: '40px auto' }}>Currenlty this category doesn't cointain products</h2>
         }
       </AllProductsBox>
-    </MainShopWrapper>
+    </MainShopWrapper >
 
 
   )

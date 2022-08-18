@@ -72,6 +72,7 @@ export const shopQuery = graphql`
         nodes {
           title
           link
+          slug
           id
           featuredImage {
             node {
