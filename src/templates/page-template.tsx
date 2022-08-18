@@ -17,7 +17,6 @@ export default function Page({ data, location }: any) {
 
         <WYSIWYGWrapper dangerouslySetInnerHTML={{ __html: content }}></WYSIWYGWrapper>
         <div style={{ paddingTop: '80px' }}></div>
-
       </ContentWrapper>
     </Layout>
   )
